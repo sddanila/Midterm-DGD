@@ -3,6 +3,11 @@
 const express = require('express');
 const router  = express.Router();
 
+/*
+All Routes For Registering and Ivndividual User Pages
+--------------------------------------------------------------
+*/
+
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {

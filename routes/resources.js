@@ -3,6 +3,11 @@
 const express = require('express');
 const router  = express.Router();
 
+/*
+Contains all the Routes for any Post or Get to the Resources
+-------------------------------------------------------------------------------
+*/
+
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {

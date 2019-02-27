@@ -5,7 +5,8 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
+//Post to Log out from multiple Pages
+  router.post("/", (req, res) => {
     res.send("Post to logout page");
   });
 
