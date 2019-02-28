@@ -9,9 +9,9 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({id: 7, username: 'dpicard', email: 'd@picard.com', password: 'password'}),
         knex('users').insert({id: 8, username: 'gbrasil', email: 'g@brasil.com', password: 'password'}),
         knex('users').insert({id: 9, username: 'dbarton', email: 'd@barton.com', password: 'password'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/fitness.jpg' , name: 'Health and Fitness'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/food.jpg' , name: 'Food and Dining'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/sports.jpg' , name: 'Sports'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/fitness.jpg' , name: 'Health and Fitness'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/food.jpg' , name: 'Food and Dining'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/sports.jpg' , name: 'Sports'}),
       ]);
     }).then(function () {
       return Promise.all([
@@ -36,14 +36,14 @@ exports.seed = function(knex, Promise) {
 
 // Promise.all(
 //   //insert all users
-// ).then(() => { 
+// ).then(() => {
 //   return knex('users').select('id')
 // })
 // .then((users) => {
 //   users.map(user => {
 //     knex('resources').insert({user_id: user.id, title: 'Hockey is the best sport in the world',
 //      description: 'I am Canadian and there is nothing better than playing hockey. Well, maybe lacrosse.',
-//       category_id: 3, 
+//       category_id: 3,
 //     url: 'https://therattrick.com/8078/08/07/top-70-reasons-why-hockey-is-the-greatest-sport/'}),
 //   })
 // })

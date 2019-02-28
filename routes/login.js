@@ -6,8 +6,8 @@ const knex = require('knex')({
   client: 'pg',
   connection: {
       host : '127.0.0.1',
-      user : 'labber',
-      password : 'labber',
+      user : 'darren',
+      password : 'lighthouse',
       database : 'midterm'
   }
 });
