@@ -9,9 +9,9 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({id: 7, username: 'dpicard', email: 'd@picard.com', password: 'password'}),
         knex('users').insert({id: 8, username: 'gbrasil', email: 'g@brasil.com', password: 'password'}),
         knex('users').insert({id: 9, username: 'dbarton', email: 'd@barton.com', password: 'password'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/fitness.jpg' , name: 'Health and Fitness'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/food.jpg' , name: 'Food and Dining'}),
-        // knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/sports.jpg' , name: 'Sports'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/fitness.jpg' , name: 'Health and Fitness'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/food.jpg' , name: 'Food and Dining'}),
+        knex('categories').insert({picture_url: 'https://github.com/sddanila/Midterm-DGD/blob/master/images/sports.jpg' , name: 'Sports'}),
       ]);
     }).then(function () {
       return Promise.all([
