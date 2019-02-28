@@ -13,7 +13,7 @@ const knex = require('knex')({
 });
 
 module.exports = (knex) => {
-const dbUtils = require('../lib/dbutils.js')(knex)
+const dbUtils = require('../lib/dbutils.js')
 /* Log In HTTP requests
 ---------------------------------------------
 */
