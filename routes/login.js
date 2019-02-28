@@ -2,18 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-      host : '127.0.0.1',
-      user : 'labber',
-      password : 'labber',
-      database : 'midterm'
-  }
-});
+// const session     = require('cookie-session');
 
 module.exports = (knex) => {
-const dbUtils = require('../lib/dbutils.js')
+const dbUtils = require('../lib/dbutils.js');
+
 /* Log In HTTP requests
 ---------------------------------------------
 */
@@ -25,18 +18,19 @@ const dbUtils = require('../lib/dbutils.js')
 
 //Post From Form on Log in page
   router.post("/", (req, res) => {
+    console.log(req.body.email);
     let info = req.body;
-    if(!dbUtils.findEmail(info.email)){
-      res.status(403).send('Email not found!');
-    } else if (!dbUtils.checkPassword(info.password)){
-      res.status(403).send('Wrong password!')
-    } else {
-      req.session.username = dbUtils.getUsername(info.email);
-      res.redirect('/');
-    }
-
+    dbUtils.findEmail(info.email, (err, email) => {
+      console.log(email[0].email);
+      if (!email[0].email) return res.status(403).send('Email not found!');
+      console.log(info.password);
+      dbUtils.checkPassword(info.email, info.password, (err, isAuthorized) => {
+        console.log(isAuthorized);
+        if (err || !isAuthorized) return res.status(403).send('Wrong password!');
+        req.session.username = dbUtils.getUsername(info.email);
+        res.redirect('/');
+      })
+    });
   });
-
   return router;
 };
-
