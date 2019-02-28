@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Resource Wall Project</title>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,15 +26,15 @@
           <h2>Login</h2>
       </header>
       <div>
-          <form action="POST" action="/login">
+          <form method="POST" action="/login">
             <label for="email">Email: </label>
-            <input type="email" name="email" placeholder="rw@gmail.com">
+            <input type="email" name="email" placeholder="example@gmail.com">
             <label for="password">Password: </label>
             <input type="password" name="password" placeholder="password">
             <button type="submit" class="button">Login</button>
           </form>
-          <form action="GET" action="/register.ejs">
-                <button type="button" class="button">Register</button>
+          <form method="GET" action="/user">
+                <button type="submit" class="button">Register</button>
           </form>
       </div>
 
