@@ -12,12 +12,12 @@ body h1 {
   color: #244751;
 }
 
-section.container {
+section.cards-container {
   display: flex;
   flex-direction: row;
 }
 
 .item {
-  align-self: center;
+  align-self: flex-start;
   padding: 30px 0px 30px 230px;
 }
