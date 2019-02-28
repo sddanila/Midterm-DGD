@@ -11,15 +11,20 @@ All Routes For Registering and Ivndividual User Pages
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    res.send("Visiting Regestration Page");
+    res.render('register');
+  });
+
+  router.post("/", (req, res) => {
+    let info = req.body;
+    res.send("Got you regestration Post"+ info.password + info.email);
   });
 
   router.get("/:username", (req, res) => {
-    res.send("On user Page of " + req.params.username);
+    res.render('user_show');
   });
 
   router.get("/:username/edit", (req, res) => {
-    res.send("On edit page of " + req.params.username);
+    res.render('user_update');
   });
 
   router.post("/:username/edit", (req, res) => {
