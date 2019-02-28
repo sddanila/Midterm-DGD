@@ -15,9 +15,6 @@ body h1 {
 section.container {
   display: flex;
   flex-direction: row;
+  margin-left: 200px;
 }
 
-.item {
-  align-self: center;
-  padding: 30px 0px 30px 230px;
-}
