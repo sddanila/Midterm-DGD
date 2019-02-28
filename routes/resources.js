@@ -11,7 +11,16 @@ Contains all the Routes for any Post or Get to the Resources
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    res.send("Resource Page");
+      knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
+      .then(result => {
+        console.log(result);
+        res.send(result);
+        knex.destroy(() => {
+          console.log('Closed Connection'); });
+          })
+      .catch(err => {
+        console.log('Err: ' + err);
+        });
   });
 
   router.get("/:resource_id", (req, res) => {
