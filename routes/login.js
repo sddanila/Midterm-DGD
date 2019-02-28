@@ -11,12 +11,13 @@ module.exports = (knex) => {
 
 //Get Log IN Page
   router.get("/", (req, res) => {
-    res.send("Get LOgin Page");
+    res.render('login');
   });
 
 //Post From Form on Log in page
   router.post("/", (req, res) => {
-    res.send("Post to login page");
+    let info = req.body;
+    res.send("Post to login page" + info.email + info.password);
   });
 
   return router;

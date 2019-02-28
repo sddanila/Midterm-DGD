@@ -19,7 +19,7 @@ module.exports = (knex) => {
   });
 
   router.get("/:resource_id/edit", (req,res) => {
-    res.send("Edit Page for " + req.params.resource_id);
+    res.render('resource_update');
   });
 
   router.post("/:resource_id/edit", (req, res) => {

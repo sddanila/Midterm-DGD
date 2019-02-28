@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<<<<<<< HEAD
     <title>Resource Wall</title>
     
+=======
+    <title>Resource Wall Project</title>
+
+>>>>>>> 81484744a4d0effca7d5643c912c34291579f1f3
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,15 +31,15 @@
             <h2>Register</h2>
         </header>
         <div>
-            <form action="POST" action="/register">
+            <form method="POST" action="/user">
               <label for="email">Email: </label>
               <input type="email" name="email" placeholder="rw@gmail.com">
               <label for="password">Password: </label>
               <input type="password" name="password" placeholder="password">
               <button type="submit" class="button">Register</button>
             </form>
-            <form action="GET" action="/login.ejs">
-                    <button type="button" class="button">Login</button>
+            <form method="GET" action="/login">
+                    <button type="submit" class="button">Login</button>
               </form>
         </div>
     </body>
