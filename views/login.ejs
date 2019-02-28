@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Resource Wall Project</title>
-
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,48 +21,25 @@
     <!-- App js -->
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-
   <body>
-    <header id="navbar">
-      <h1>DGD</h1>
-    </header>
-    
-    <section>
-      <nav id="side_navbar">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </nav>
-      
+      <header>
+          <h2>Login</h2>
+      </header>
       <div>
-        <h2>Categories</h2>
-        <div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                      <h3>Thumbnail label</h3>
-                      <p>...</p>
-                      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </div>
+          <form action="POST" action="/login">
+            <label for="email">Email: </label>
+            <input type="email" name="email" placeholder="rw@gmail.com">
+            <label for="password">Password: </label>
+            <input type="password" name="password" placeholder="password">
+            <button type="submit" class="button">Login</button>
+          </form>
+          <form action="GET" action="/register.ejs">
+                <button type="button" class="button">Register</button>
+          </form>
       </div>
-    </section>
 
-    <footer id="footer">
-      <p></p>
-    </footer>
-
+      <footer>
+          <p></p>
+      </footer>
   </body>
 </html>
