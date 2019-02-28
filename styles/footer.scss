@@ -2,3 +2,9 @@ footer.navbar p {
     margin: auto;
     padding: 5px 0px 5px 0px;
 }
+
+footer.navbar {
+    z-index: 5;
+    position:absolute;
+    width:100%;
+}

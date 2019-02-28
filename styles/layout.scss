@@ -6,8 +6,18 @@ $color5: #d1e8e2;
 
 body {
   background-color: #EEE;
+}
 
-  h1 {
-    color: #244751;
-  }
+body h1 {
+  color: #244751;
+}
+
+section.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  align-self: center;
+  padding: 30px 0px 30px 230px;
 }
