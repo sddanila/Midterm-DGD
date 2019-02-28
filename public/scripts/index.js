@@ -4,12 +4,8 @@ $(() => {
     $('.cards-container').append(card);
   }
 
-  function loadData () {
-    $.ajax({
-    method: "GET",
-    url: "/resources"
-  }).done((resources) => {
-    for(let resource of resources) {
+  function buildCards(data) {
+    for(let resource of data) {
       console.log(resource);
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
       let $img = $("<img>").attr('alt', 'Category Pic').attr('src', resource.url).addClass("card-img-top");
@@ -22,8 +18,17 @@ $(() => {
 
       renderToPage($outerdiv);
     }
-  });
   }
 
-  loadData();
+  function loadAllData () {
+    $.ajax({
+    method: "GET",
+    url: "/resources"
+     }).done((resources) => {
+      buildCards(resources);
+    });
+   }
+
+
+  loadAllData();
 });
