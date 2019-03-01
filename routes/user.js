@@ -82,7 +82,7 @@ module.exports = (knex) => {
         if (email !== '' && email !== req.body.email){
           dbUtils.updateEmail(email);
         }
-        if (req.body.oldPassword !== '' && req.body.newPassword !== '' && req.body.newPassword2 !== '' && req.body.oldPassword === password && req.body.newPassword === req.body.newPassword2){
+        if (req.body.oldPassword !== '' && req.body.newPassword !== '' && req.body.newPassword2 !== '' && !bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
           dbUtils.updatePassword(req.body.newPassword);
         } else {
           res.status(403).send('The passwords don\'t match. Please make sure to input your old password, your new password and confirm your new password.')
