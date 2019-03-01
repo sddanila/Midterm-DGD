@@ -19,7 +19,8 @@ $(() => {
                                 .append($('<h5>').text(resource.title).addClass("card-title"))
                                 .append($('<p>').text(resource.description).addClass('card-text'))
                                 .append($('<a>').attr('href', '#').addClass('btn btn-primary').text('Go Somewhere'));
-      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart').text(resource.count)).append($('<p>').text(rounder(resource.avg)+ ' / 5'));
+      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart').text(' '+resource.count)).addClass('ranking-likes')
+                                .append($('<p>').text(rounder(resource.avg)+ ' / 5  Rating'));
       $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);
