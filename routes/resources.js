@@ -50,6 +50,16 @@ module.exports = (knex) => {
         });
     });
 
+  router.get("/new", (req, res) => {
+    console.log(req.body);
+    res.render('resource_new');
+  });
+
+  router.post("/new", (req, res) => {
+    console.log(req.body);
+    res.redirect('../');
+  });
+
   router.get("/:resource_id", (req, res) => {
     res.render('resource_show');
   });
