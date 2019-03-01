@@ -15,7 +15,7 @@ module.exports = (knex) => {
   });
 
   router.get("/:resource_id", (req, res) => {
-    res.send("Single unique Resource Page for " + req.params.resource_id);
+    res.render('resource_show');
   });
 
   router.get("/:resource_id/edit", (req,res) => {
