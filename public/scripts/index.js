@@ -7,7 +7,6 @@ $(() => {
   function buildCards(data) {
     $('.card').remove();
     for(let resource of data) {
-      console.log(resource);
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
       let $img = $("<img>").attr('alt', 'Category Pic').attr('src', resource.picture_url).addClass("card-img-top");
 
@@ -30,14 +29,13 @@ $(() => {
     });
    }
 
-
+//Loads all Data
   loadAllData();
-
+//Search bar ajax request
   $('#search-bar').on('submit', function(event) {
     event.preventDefault();
     const search = {};
     search.parameter = ($(this).serialize().split('=')[1]);
-    console.log(search);
     $.ajax({
       method: 'GET',
       url:'/resources',
@@ -45,6 +43,20 @@ $(() => {
       }).done(returnData => {
       buildCards(returnData);
     });
+  });
+
+//Side bar Category Filtering
+  $('.side-category').on('click', function(event) {
+    event.preventDefault();
+    const search = {'category': $(this).text()};
+    $.ajax({
+      method: 'GET',
+      url:'/resources',
+      data: search
+      }).done(returnData => {
+      buildCards(returnData);
+    });
+
   });
 
 });
