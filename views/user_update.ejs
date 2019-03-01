@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Resource Wall</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <% include ./partials/_header %>
 
-    <!-- app CSS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <body id="register">
+    <section id="contain-resources">
+    <div id="register" class="d-flex align-items-center justify-content-center">
+			<div class="card text-center bg-secondary" style="min-width: 33rem">
+        <div class="card-header"><h3>Update your account info</h3></div>
+        <div class="card-body">
+          <form method="POST" action="/user/:user/edit">
+            <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="Change username">
+            <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="Change email">
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="oldPassword" placeholder="Old password">
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword" placeholder="New password">
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword2" placeholder="Confirm new password">
+            <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Update account info</button>
+          </form>
+        </div>
+      </div>
+      </div>
+      </section>
+	</body>
 
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+	<% include ./partials/_footer %>
 
-    <!-- App js -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-    <body>
-        <section class="update_resource">
-            <div class="new">
-
-            </div>
-
-            <div class="comments">
-
-            </div>
-        </section>
-    </body>
+</html>

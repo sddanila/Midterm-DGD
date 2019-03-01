@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Resource Wall</title>
+
+    <% include ./partials/_header %>    
     
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <body>
+        <section id="contain-resources">
+            <div id="new-resources" class="justify-content-center d-flex align-items-center">
+                <div class="card text-center bg-white" style="min-width: 33rem">
+                <div class="card-header"><h3>Update your resource</h3></div>
+                    <div class="card-body">
+                        <form method="POST" action="/:resource_id/edit">
+                            <input type="url" class="form-control mr-lg-5 my-5 my-sm-3" name="url" placeholder="Resource URL">
+                            <div class="form-group">
+                                <label id="category-menu" for="category">Select catergory from list</label>
+                                <select name="category" class="form-control" id="category">
+                                    <option>Food</option>
+                                    <option>DIY and Crafts</option>
+                                    <option>Home Decor</option>
+                                    <option>Health and Fitness</option>
+                                    <option>Sports</option>
+                                    <option>Travel</option>
+                                    <option>Technology</option>
+                                    <option>Kids</option>
+                                    <option>Entertainment</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control mr-sm-2 my-2 my-sm-3" name="title" placeholder="Edit resource title">
+                            <textarea name="description" class="form-control mr-sm-2 my-2 my-sm-3" id="description_text" placeholder="Edit resource description"></textarea>
+                            <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Update resource</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-    <!-- app CSS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
-    <!-- App js -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-     <body>
-    <section>
-        <div class="new_resource">
-           <form action="POST" method="">
-               <h3>New post</h3>
-               <label for="URL">URL</label>
-               <input type="url" name="url" placeholder="http://www.google.com">
-               <label for="title">Title</label>
-               <input type="text" name="title" placeholder="Post title">
-               <label for="textarea">Description</label>
-               <textarea name="description" id="description_text"></textarea>
-           </form>
-       </div>
-    </section>
-
-    <footer id="footer">
-        <p></p>
-    </footer>
+    <% include ./partials/_footer %>    
 
   </body>
 </html>
