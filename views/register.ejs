@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <div class="nav-trans">
-  <% include ./partials/_headerRL %>
-  </div>
+  <% include ./partials/_headerR %>
 
   <body id="register">
-    <section class="justify-content-center d-flex align-items-center">
-			<div class="card text-center bg-secondary" style="min-width: 33rem">
+    <section class="d-flex align-items-center justify-content-center">
+			<div class="card text-center bg-secondary" style="min-width: 33rem; margin-top: 10em">
         <div class="card-header"><h3>Create your account</h3></div>
         <div class="card-body">
           <form method="POST" action="/user">
             <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="username">
             <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="email">
             <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="password" placeholder="password">
-            <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Register</button>
+            <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Sign up</button>
           </form>
         </div>
       </div>

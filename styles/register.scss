@@ -2,11 +2,12 @@ body#register {
     background-color: lightcyan;
   }
 
-.justify-content-center {
-    z-index: 8;
-    margin-top: 50px;
+#slog {
+  display: inline-table;
+  font-style: italic;
+  font-size: 3em;
 }
 
-div#nav-trans {
-    opacity: .5;
+label {
+  color: beige;
 }
