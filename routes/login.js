@@ -13,7 +13,8 @@ const knex = require('knex')({
 });
 
 module.exports = (knex) => {
-const dbUtils = require('../lib/dbutils.js')
+const dbUtils = require('../lib/dbutils.js');
+
 /* Log In HTTP requests
 ---------------------------------------------
 */
@@ -26,17 +27,15 @@ const dbUtils = require('../lib/dbutils.js')
 //Post From Form on Log in page
   router.post("/", (req, res) => {
     let info = req.body;
-    if(!dbUtils.findEmail(info.email)){
-      res.status(403).send('Email not found!');
-    } else if (!dbUtils.checkPassword(info.password)){
-      res.status(403).send('Wrong password!')
-    } else {
-      req.session.username = dbUtils.getUsername(info.email);
+    dbUtils.findEmail(info.email, (err, result) => {
+      if (err || !Array.isArray(result)) return res.status(403).send('Something went wrong!');
+      const user = result[0];
+      if (!user || !user.email) return res.status(403).send('Email not found!');
+      if (user.password !== info.password) return res.status(403).send('Incorrect password!');
+    
+      req.session.username = user.username;
       res.redirect('/');
-    }
-
+    });
   });
-
   return router;
 };
-
