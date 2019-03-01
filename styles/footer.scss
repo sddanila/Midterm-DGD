@@ -5,7 +5,7 @@ footer.navbar p {
 
 footer.navbar {
     z-index: 5;
-    position:absolute;
-    bottom: 0;
-    width:100%;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 }

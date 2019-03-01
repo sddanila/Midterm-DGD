@@ -1,0 +1,44 @@
+$color1: #2c3531;
+$color2: #116466;
+$color3: #d9b08c;
+$color4: #ffcb9a;
+$color5: #d1e8e2;
+
+section.contain-resources {
+    overflow: hidden;
+      position: relative;
+      width: 100%;
+  }
+  
+  div#my-resources {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $color2;
+  }
+  
+  div#liked-resources {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: $color3;
+  }
+  
+  div#my-resources h2,
+  div#liked-resources h2 {
+    float: initial;
+    padding: 5rem;
+    text-align: -webkit-center;
+  }
+
+  /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+  @media (max-width: 600px) {
+    div#my-resources, div#liked-resources {
+      width: 100%;
+      height: auto;
+    }
+  }
