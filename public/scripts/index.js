@@ -1,5 +1,17 @@
 $(() => {
 
+  function getRating(resource_id) {
+    console.log('Sending request');
+    $.ajax({
+    method: "GET",
+    url: "/resources/"+resource_id+"/rating"
+     }).done((rating) => {
+      console.log(rating);
+      return rating.sum/rating.count;
+    });
+  }
+
+  console.log(getRating(11));
   function renderToPage(card) {
     $('.cards-container').append(card);
   }
@@ -14,7 +26,8 @@ $(() => {
                                 .append($('<h5>').text(resource.title).addClass("card-title"))
                                 .append($('<p>').text(resource.description).addClass('card-text'))
                                 .append($('<a>').attr('href', '#').addClass('btn btn-primary').text('Go Somewhere'));
-      $outerdiv.append($img).append($middleDiv);
+      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart'));
+      $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);
     }

@@ -22,7 +22,6 @@ module.exports = (knex) => {
       console.log('Err: ' + err);
       });
   }
-
   function getCertianResources(searchParam) {
      return knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
                     .where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
@@ -36,7 +35,6 @@ module.exports = (knex) => {
                   console.log('Err: ' + err);
                   });
   }
-
   function getCategoryResources(category) {
       return knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
                     .where('categories.name','LIKE','%'+category+'%')
@@ -90,6 +88,19 @@ module.exports = (knex) => {
 
   router.post("/:resource_id/like", (req, res) => {
     res.send("Made a like to post " + req.params.resource_id);
+  });
+
+  router.get("/:resource_id/rating" , (req, res) => {
+    const resource = req.params.resource_id;
+    knex('ratings').sum('ratings').count('ratings').where('resource_id','=',`${resource}`)
+      .then(result => {
+        res.send(result);
+        knex.destroy(() => {
+          console.log('Closed Connection'); });
+          })
+      .catch(err => {
+        console.log('Err: ' + err);
+        });
   });
 
   router.post("/:resource_id/rating", (req, res) => {
