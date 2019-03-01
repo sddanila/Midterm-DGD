@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
- 
-    <% include ./partials/_header %>    
+
 
     <body>
+    <% include ./Partials/_header %>
     <section id="contain-resources">
         <div id="new-resources" class="justify-content-center d-flex align-items-center">
             <div class="card text-center bg-white" style="min-width: 33rem">
             <div class="card-header"><h3>Create a new resource</h3></div>
                 <div class="card-body">
-                    <form method="POST" action="/:resource_id/new">
+                    <form method="POST" action="/resources/new">
                         <input type="url" class="form-control mr-lg-5 my-5 my-sm-3" name="url" placeholder="New resource URL">
                         <div class="form-group">
                             <label id="category-menu" for="category">Select catergory from list</label>
@@ -34,8 +34,8 @@
             </div>
         </div>
     </section>
-        
-    <% include ./partials/_footer %>
+
+    <% include ./Partials/_footer %>
 
     </body>
 </html>
