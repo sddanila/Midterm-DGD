@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const dbUtils = require('../lib/dbutils.js');
 
 
 module.exports = () => {
