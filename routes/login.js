@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt      = require('bcrypt');
 
 
 module.exports = (knex) => {
@@ -21,11 +22,10 @@ const dbUtils = require('../lib/dbutils.js');
     let info = req.body;
     dbUtils.findEmail(info.email, (err, result) => {
       const password = info.password;
-      const hashedPassword = bcrypt.hashSync(password, 10);
       if (err || !Array.isArray(result)) return res.status(403).send('Something went wrong!');
       const user = result[0];
       if (!user || !user.email) return res.status(403).send('Email not found!');
-      if (user.password !== hashedPassword) return res.status(403).send('Incorrect password!');
+      if (!bcrypt.compareSync(password, user.password)) return res.status(403).send('Incorrect password!');
       req.session.user_id = user.id;
       res.redirect('/');
     });

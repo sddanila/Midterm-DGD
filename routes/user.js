@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt      = require('bcrypt');
 
 /*
 All Routes For Registering and Ivndividual User Pages
@@ -83,7 +84,8 @@ module.exports = (knex) => {
           dbUtils.updateEmail(email);
         }
         if (req.body.oldPassword !== '' && req.body.newPassword !== '' && req.body.newPassword2 !== '' && !bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
-          dbUtils.updatePassword(req.body.newPassword);
+          let newHashedPassword = bcrypt.hashSync(req.body.newPassword, 10)
+          dbUtils.updatePassword(newHashedPassword);
         } else {
           res.status(403).send('The passwords don\'t match. Please make sure to input your old password, your new password and confirm your new password.')
         }
