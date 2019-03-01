@@ -2,15 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-      host : '127.0.0.1',
-      user : 'darren',
-      password : 'lighthouse',
-      database : 'midterm'
-  }
-});
+
 
 module.exports = (knex) => {
 const dbUtils = require('../lib/dbutils.js');
@@ -32,8 +24,9 @@ const dbUtils = require('../lib/dbutils.js');
       const user = result[0];
       if (!user || !user.email) return res.status(403).send('Email not found!');
       if (user.password !== info.password) return res.status(403).send('Incorrect password!');
-    
-      req.session.username = user.username;
+      req.session.user_id = user.id;
+      console.log(result);
+      console.log("THIS IS THE COOKIE:", req.session.user_id);
       res.redirect('/');
     });
   });
