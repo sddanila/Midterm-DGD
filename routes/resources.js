@@ -8,20 +8,65 @@ Contains all the Routes for any Post or Get to the Resources
 -------------------------------------------------------------------------------
 */
 
+
 module.exports = (knex) => {
 
+  function getAllResources() {
+    return knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
+    .then(result => {
+      return result;
+      knex.destroy(() => {
+        console.log('Closed Connection'); });
+        })
+    .catch(err => {
+      console.log('Err: ' + err);
+      });
+  }
+
+  function getCertianResources(searchParam) {
+     return knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
+                    .where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
+                    .orWhere('categories.name','LIKE','%'+searchParam+'%')
+                .then(result => {
+                  return result;
+                  knex.destroy(() => {
+                    console.log('Closed Connection'); });
+                    })
+                .catch(err => {
+                  console.log('Err: ' + err);
+                  });
+  }
+
+  function getCategoryResources(category) {
+      return knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
+                    .where('categories.name','LIKE','%'+category+'%')
+              .then(result => {
+                return result;
+                knex.destroy(() => {
+                  console.log('Closed Connection'); });
+                  })
+              .catch(err => {
+                console.log('Err: ' + err);
+                });
+  }
+
   router.get("/", (req, res) => {
-      knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
-      .then(result => {
-        console.log(result);
-        res.send(result);
-        knex.destroy(() => {
-          console.log('Closed Connection'); });
-          })
-      .catch(err => {
-        console.log('Err: ' + err);
+    if (req.query.parameter) {
+          getCertianResources(req.query.parameter).then(result => {
+          res.send(result);
         });
-  });
+    } else if (req.query.category) {
+      getCategoryResources(req.query.category).then(result => {
+          res.send(result);
+      });
+    }else {
+        getAllResources().then(result => {
+        res.send(result);
+        });
+    }
+
+    });
+
 
   router.get("/:resource_id", (req, res) => {
     res.send("Single unique Resource Page for " + req.params.resource_id);
