@@ -29,8 +29,10 @@ app.use(cookieSession({
   name: 'session',
   // keys: [/* secret keys */],
   secret: 'Expecto patronum',
+  resave: false,
+  saveUninitialized: true,
   // Cookie Options
-  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 24 hours 
 }))
 
 // Log knex SQL queries to STDOUT as well
@@ -50,7 +52,7 @@ app.use(express.static("public"));
 app.use("/user", userRoutes(knex));
 app.use("/resources", resourceRoutes(knex));
 app.use("/login", loginRoutes(knex));
-app.use("/logout", logoutRoutes(knex));
+app.use("/logout", logoutRoutes());
 
 // Home page
 app.get("/", (req, res) => {
