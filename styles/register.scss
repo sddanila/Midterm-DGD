@@ -1,6 +1,31 @@
-body#register {
-    background-color: lightcyan;
+$color1: #2c3531;
+$color2: #116466;
+$color3: #d9b08c;
+$color4: #ffcb9a;
+$color5: #d1e8e2;
+
+section.contain-resources {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+div#register {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: $color5;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  div#register {
+    width: 100%;
+    height: auto;
   }
+}
 
 #slog {
   display: inline-table;
