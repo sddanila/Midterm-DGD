@@ -18,13 +18,9 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     let info = req.body;
-    dbUtils.findEmail(info.email, (err, result) => {
-      const user = result[0];
-      if (user.email) return res.status(403).send('Your email already exists!');
-      if (err || info.email === '' || info.password === '' || info.username === '') return res.status(403).send('Something went wrong. Please fill out all the fields.');
-      dbUtils.createUser(info.username, info.email, info.password);
-      res.redirect('/');
-    }); 
+    let password = bcrypt.hashSync(info.password, 10);
+    dbUtils.createUser(info.username, info.email, password);
+    res.redirect('/');
   });
 
   router.get("/:user_id", (req, res) => {
@@ -74,22 +70,23 @@ module.exports = (knex) => {
       let userId = req.session.user_id;
       dbUtils.findUserById(userId, (err, result) => {
         if(err) console.error(err);
+        let newUsername = req.body.username;
+        let newEmail = req.body.email;
+        let newPassword = req.body.newPassword;
         let username = result[0].username;
         let email = result[0].email;
         let password = result[0].password;
-        if (username !== '' && username !== req.body.username){
-          dbUtils.updateUsername(username);
-        }
-        if (email !== '' && email !== req.body.email){
-          dbUtils.updateEmail(email);
-        }
-        if (req.body.oldPassword !== '' && req.body.newPassword !== '' && req.body.newPassword2 !== '' && !bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
+        if (newUsername.length !== 0 && username !== newUsername){
+          dbUtils.updateUsername(userId, newUsername);
+        } else if (newEmail.length !== 0 && email !== newEmail){
+          dbUtils.updateEmail(userId, newEmail);
+        } else if (req.body.oldPassword.length !== 0 && newPassword.length !== 0 && req.body.newPassword2.length !== 0 && !bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
           let newHashedPassword = bcrypt.hashSync(req.body.newPassword, 10)
-          dbUtils.updatePassword(newHashedPassword);
+          dbUtils.updatePassword(userId, newHashedPassword);
         } else {
           res.status(403).send('The passwords don\'t match. Please make sure to input your old password, your new password and confirm your new password.')
         }
-        res.redirect(`/${userId}`)
+        res.redirect(`/user/${userId}`)
       });
     } else {
       res.redirect('/login');
