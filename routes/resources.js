@@ -8,20 +8,36 @@ Contains all the Routes for any Post or Get to the Resources
 -------------------------------------------------------------------------------
 */
 
+
 module.exports = (knex) => {
 
+  function getAllResources(parameters) {
+    let query = knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'});
+    if (parameters.parameter) {
+      const searchParam = parameters.parameter;
+      query = query.where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
+                    .orWhere('categories.name','LIKE','%'+searchParam+'%');
+      console.log(query.toString());
+    } else if (parameters.category) {
+      const category = parameters.category;
+      query = query.where('categories.name','LIKE','%'+category+'%');
+      console.log(query.toString());
+    }
+    return query.then(result => {
+      return result;
+      knex.destroy(() => {
+        console.log('Closed Connection'); });
+        })
+    .catch(err => {
+      console.log('Err: ' + err);
+      });
+  }
+
   router.get("/", (req, res) => {
-      knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'})
-      .then(result => {
-        console.log(result);
-        res.send(result);
-        knex.destroy(() => {
-          console.log('Closed Connection'); });
-          })
-      .catch(err => {
-        console.log('Err: ' + err);
+      getAllResources(req.query).then(result => {
+      res.send(result);
         });
-  });
+    });
 
   router.get("/:resource_id", (req, res) => {
     res.render('resource_show');
@@ -45,6 +61,20 @@ module.exports = (knex) => {
 
   router.post("/:resource_id/like", (req, res) => {
     res.send("Made a like to post " + req.params.resource_id);
+  });
+
+  router.get("/:resource_id/rating" , (req, res) => {
+    const resource = req.params.resource_id;
+    knex('ratings').sum('ratings').count('ratings').where('resource_id','=',`${resource}`)
+      .then(result => {
+        console.log('I am in the server waiting' +result);
+        res.send(result);
+        knex.destroy(() => {
+          console.log('Closed Connection'); });
+          })
+      .catch(err => {
+        console.log('Err: ' + err);
+        });
   });
 
   router.post("/:resource_id/rating", (req, res) => {

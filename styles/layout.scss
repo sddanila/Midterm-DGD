@@ -12,4 +12,6 @@ section.cards-container {
   display: flex;
   flex-direction: row;
   margin-left: 220px;
+  flex-wrap: wrap;
 }
+

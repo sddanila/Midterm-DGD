@@ -8,20 +8,21 @@
     overflow-x: hidden;
     list-style-type: none;
   }
-  
+
    #side_navbar ul {
 	list-style-type: none;
     margin-top: 40px;
   }
-  
+
   #side_navbar a {
     padding: 6px 8px 6px 1px;
     text-decoration: none;
     font-size: 15px;
     color: #ffcb9a;
     display: block;
+    cursor: pointer;
   }
-  
+
   #side_navbar a:hover {
     color: #d9b08c;
   }
