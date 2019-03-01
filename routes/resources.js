@@ -12,7 +12,16 @@ Contains all the Routes for any Post or Get to the Resources
 module.exports = (knex) => {
 
   function getAllResources(parameters) {
-    let query = knex.select('*').from("resources").join("categories",{'categories.id': 'resources.category_id'});
+    let query = knex.select('resources.id',
+                            'resources.title',
+                            'resources.description',
+                            'resources.category_id',
+                            'categories.picture_url')
+                            .avg('ratings.ratings')
+                    .from("resources")
+                      .join("categories",{'categories.id': 'resources.category_id'})
+                      .rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
+                      .groupBy("resources.id", 'categories.picture_url');
     if (parameters.parameter) {
       const searchParam = parameters.parameter;
       query = query.where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')

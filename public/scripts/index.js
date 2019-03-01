@@ -1,17 +1,9 @@
 $(() => {
 
-  function getRating(resource_id) {
-    console.log('Sending request');
-    return $.ajax({
-    method: "GET",
-    url: "/resources/"+resource_id+"/rating"
-     }).done((rating) => {
-      console.log(rating);
-      return rating;
-    });
+  function rounder(num) {
+    return Math.round(num*10)/10;
   }
 
-  //console.log(getRating(11));
   function renderToPage(card) {
     $('.cards-container').append(card);
   }
@@ -26,7 +18,7 @@ $(() => {
                                 .append($('<h5>').text(resource.title).addClass("card-title"))
                                 .append($('<p>').text(resource.description).addClass('card-text'))
                                 .append($('<a>').attr('href', '#').addClass('btn btn-primary').text('Go Somewhere'));
-      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart'));
+      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart')).append($('<p>').text(rounder(resource.avg)+ ' / 5'));
       $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);
