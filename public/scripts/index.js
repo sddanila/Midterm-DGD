@@ -11,6 +11,7 @@ $(() => {
   function buildCards(data) {
     $('.card').remove();
     for(let resource of data) {
+      console.log(resource);
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
       let $img = $("<img>").attr('alt', 'Category Pic').attr('src', resource.picture_url).addClass("card-img-top");
 
@@ -18,7 +19,7 @@ $(() => {
                                 .append($('<h5>').text(resource.title).addClass("card-title"))
                                 .append($('<p>').text(resource.description).addClass('card-text'))
                                 .append($('<a>').attr('href', '#').addClass('btn btn-primary').text('Go Somewhere'));
-      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart')).append($('<p>').text(rounder(resource.avg)+ ' / 5'));
+      let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart').text(resource.count)).append($('<p>').text(rounder(resource.avg)+ ' / 5'));
       $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);

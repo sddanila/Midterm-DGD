@@ -18,9 +18,11 @@ module.exports = (knex) => {
                             'resources.category_id',
                             'categories.picture_url')
                             .avg('ratings.ratings')
+                            .count('likes.resource_id')
                     .from("resources")
                       .join("categories",{'categories.id': 'resources.category_id'})
                       .rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
+                      .rightJoin("likes", {'likes.resource_id' : 'resources.id'})
                       .groupBy("resources.id", 'categories.picture_url');
     if (parameters.parameter) {
       const searchParam = parameters.parameter;
