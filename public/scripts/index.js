@@ -2,16 +2,16 @@ $(() => {
 
   function getRating(resource_id) {
     console.log('Sending request');
-    $.ajax({
+    return $.ajax({
     method: "GET",
     url: "/resources/"+resource_id+"/rating"
      }).done((rating) => {
       console.log(rating);
-      return rating.sum/rating.count;
+      return rating;
     });
   }
 
-  console.log(getRating(11));
+  //console.log(getRating(11));
   function renderToPage(card) {
     $('.cards-container').append(card);
   }
@@ -49,6 +49,7 @@ $(() => {
     event.preventDefault();
     const search = {};
     search.parameter = ($(this).serialize().split('=')[1]);
+    console.log(search);
     $.ajax({
       method: 'GET',
       url:'/resources',
