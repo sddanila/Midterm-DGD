@@ -10,11 +10,11 @@
         <div class="card-header"><h3>Update your account info</h3></div>
         <div class="card-body">
           <form method="POST" action="/user/:user/edit">
-            <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="Change username">
-            <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="Change email">
-            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="oldPassword" placeholder="Old password">
-            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword" placeholder="New password">
-            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword2" placeholder="Confirm new password">
+            <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="<%= username %>"></input>
+            <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="<%= email %>"></input>
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="oldPassword" placeholder="Old password"></input>
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword" placeholder="New password"></input>
+            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="newPassword2" placeholder="Confirm new password"></input>
             <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Update account info</button>
           </form>
         </div>

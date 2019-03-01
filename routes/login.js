@@ -21,6 +21,7 @@ const dbUtils = require('../lib/dbutils.js');
   router.post("/", (req, res) => {
     let info = req.body;
     dbUtils.findEmail(info.email, (err, result) => {
+      console.log(result);
       const password = info.password;
       if (err || !Array.isArray(result)) return res.status(403).send('Something went wrong!');
       const user = result[0];
