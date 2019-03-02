@@ -64,21 +64,57 @@ module.exports = (knex) => {
                       });
                           });
 
-  router.get("/:resource_id", (req, res) => {
-    const templateVars = {
-      user_id: 0
-    };
-    res.render('resource_show', templateVars);
+  router.get('/:resource_id', (req, res) => {
+    const resourceId = req.params.resource_id;
+      dbUtils.findResourceById(resourceId, (err, result) => {
+        if(err) console.error(err);
+        console.log(result);
+        let title = result[0].title;
+        let likes = result[0].count;
+        let ratings = result[0].avg;
+        let pic = result[0].picture_url;
+        let description = result[0].description;
+        let userId = result[0].user_id;
+        res.render('resource_show', {
+          resource_id: req.params.resource_id,
+          user_id: userId,
+          pic,
+          ratings,
+          likes,
+          title,
+          description,
+        });
+      })
+      
+      // let resource = knex.select('*').from('resources').where('id', '=', req.params.resource_id);
+      // console.log('resource:', resource)
+      // let url = knex.select('url').from('categories').where('categories.resources_id', '=' + req.params.resource_id);
+      // console.log('url:', url)
+      // res.render('resource_show', {
+        //   resource: resource,
+        //   user_id: resource.user_id,
+        //   url: url});
+    });
+
+  router.get('/:resource_id/comments', (req, res) => {
+    knex.select('*').from('comments').where('resource_id', '=', req.params.resource_id).then(arrayOfData => {
+      res.send(arrayOfData);
+    });
   });
 
-  router.post('/:resource_id/comments'), (req, res) => {
-    knex.insert('comment', 'user_id').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
-  } 
+  router.post('/:resource_id/comments', (req, res) => {
+    console.log('I am here in the server');
+    let userId = req.session.user_id;
+    console.log('userId:', userId)
+
+    // knex('comments').insert('').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
+  });
 
   router.get("/:resource_id/edit", (req,res) => {
     res.render('resource_update');
   });
 
+        
   router.post("/:resource_id/edit", (req, res) => {
     res.send("Made a post request to change ", req.params.resource_id);
   });
@@ -94,6 +130,7 @@ module.exports = (knex) => {
   router.post("/:resource_id/like", (req, res) => {
     res.send("Made a like to post " + req.params.resource_id);
   });
+
 
   router.get("/:resource_id/rating" , (req, res) => {
     const resource = req.params.resource_id;
