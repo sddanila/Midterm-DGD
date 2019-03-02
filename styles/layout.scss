@@ -3,7 +3,10 @@ $color2: #116466;
 $color3: #d9b08c;
 $color4: #ffcb9a;
 $color5: #d1e8e2;
+$main-font: 'Vollkorn', sans-serif;
+$style-font: 'Permanent Marker', sans-serif;
 
 body {
   background-color: whitesmoke;
+  font: $main-font;
 }
