@@ -5,12 +5,20 @@ $color4: #ffcb9a;
 $color5: #d1e8e2;
 $color6: #eac67a;
 $color7: #E9B000;
+$color8: #cd7f32;
 
 @import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i);
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
 $main-font: 'Vollkorn', sans-serif;
-$style-font: 'Permanent Marker', sans-serif;
+$style-font: 'Merriweather', serif;
 
+#background-logo1 {
+  opacity: 0.1
+}
+
+#background-logo2 {
+  opacity: 0.1
+}
 section.contain-resources {
     overflow: hidden;
       position: relative;
@@ -35,7 +43,7 @@ section.contain-resources {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: $color3;
+    background-color: $color6;
   }
 
   div#my-resources h2,
