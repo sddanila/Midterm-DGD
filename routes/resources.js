@@ -18,13 +18,13 @@ module.exports = (knex) => {
                             'resources.description',
                             'resources.category_id',
                             'categories.picture_url')
-                            .avg('ratings.ratings')
-                            .count('likes.resource_id')
+                            //.avg('ratings.ratings')
+                            //.count('likes.resource_id')
                     .from("resources")
                       .join("categories",{'categories.id': 'resources.category_id'})
-                      .rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
-                      .rightJoin("likes", {'likes.resource_id' : 'resources.id'})
-                      .groupBy("resources.id", 'categories.picture_url');
+                      //.rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
+                      //.rightJoin("likes", {'likes.resource_id' : 'resources.id'})
+                      //.groupBy("resources.id", 'categories.picture_url');
     if (parameters.parameter) {
       const searchParam = parameters.parameter;
       query = query.where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
@@ -53,7 +53,6 @@ module.exports = (knex) => {
 
   router.post("/new", (req, res) => {
     let userId = req.session.user_id;
-    console.log(userId);
     knex('resources').insert({ user_id: `${userId}`,
                                 title: req.body.title,
                                 description: req.body.description,
