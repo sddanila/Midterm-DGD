@@ -4,7 +4,7 @@
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <!-- App js -->
-  <script type="text/javascript" src="/scripts/app_show.js"></script>
+  <script type="text/javascript" src="/scripts/app_comments.js"></script>
 </head>
 
   <% include ./Partials/_header %>
@@ -14,18 +14,22 @@
     <section class="cards-container-show" id="contain-resources">
       <div id="register1" class="d-flex align-items-center justify-content-center">
         <div class="card" style="width: 34rem;">
-          <img class="card-img-top" src="/images/kids.jpg" alt="Card image cap">
+          <img class="card-img-top" src="<%= pic %>" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title"><%= title %></h5>
+            <p class="card-text"><%= description %></p>
+            <a href="#" class="btn btn-primary ">Go somewhere</a>
+              <div class="ranking-likes">
+                <i class="fas fa-heart"><%= likes %></i>
+                <p><%= Math.round(ratings * 10) / 10 + " / 5" %></p>
+            </div>
           </div>
         </div>
       </div>
       <div id="register2" class="d-flex align-items-center justify-content-center">
         <div class="card" style="width: 34rem;">
           <div class="card-body">
-            <form id="form-comments" action="/<%= resource_id %>/comments" method="POST"></form>
+            <form id="form-comments" action="/resources/<%= resource_id %>/comments" method="POST">
               <h6 class="card-title">Write your comment</h5>
               <textarea id="comments-text" name="comments-text" cols="30" placeholder="Write a comment..." rows="10"></textarea>
               <button type="submit" class="btn btn-sm btn-block btn-primary">Comment</button>
@@ -34,11 +38,11 @@
         </div>
       </div>
       <div id="register3" class="d-flex align-items-center justify-content-center">
-          <div class="card" style="width: 34rem;">
-            <div class="card-body-comments">
+          <div class="card" id="card-comments" style="width: 34rem;">
+            <!-- <div class="card-body-comments">
               <h6 class="username-comments" class="card-title">Username will be printed here</h5>
               <p class="user-comments">user comments here</p>
-            </div>
+            </div> -->
           </div>
         </div>
     </section>

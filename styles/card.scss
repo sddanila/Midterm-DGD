@@ -32,6 +32,18 @@ $style-font: 'Merriweather', serif;
 
 }
 
+.card-comments {
+  margin: 5px;
+
+  .ranking-likes {
+    display: inline-flex;
+    justify-content: space-evenly;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding-top: 10px;
+  }
+}
+
 
 section.cards-container {
   display: flex;
