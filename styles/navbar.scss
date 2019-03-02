@@ -47,3 +47,14 @@ nav.navbar {
     background-color: #cd7f32;
     border-color: #cd7f32;
 }
+
+#hamburger {
+    justify-content: flex-end;
+    position: relative;
+}
+
+@media (min-width: 992px){
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+}
