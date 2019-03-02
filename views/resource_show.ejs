@@ -23,8 +23,10 @@
         <div class="card" style="width: 34rem;">
           <div class="card-body">
             <h6 class="card-title">Write your comment</h5>
-            <textarea name="comments" id="comments" cols="30" placeholder="Write a comment..." rows="10"></textarea>
-            <a href="/" class="btn btn-sm btn-block btn-primary">Comment</a>
+              <form id="comments" action="/<%=resource_id%>/comments" method="POST">
+                <textarea name="comments" id="comments" cols="30" placeholder="Write a comment..." rows="10"></textarea>
+                <button class="btn btn-sm btn-block btn-primary">Comment</button>
+              </form>
           </div>
         </div>
       </div>

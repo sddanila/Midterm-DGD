@@ -61,8 +61,16 @@ module.exports = (knex) => {
   });
 
   router.get("/:resource_id", (req, res) => {
-    res.render('resource_show');
+    knex.select('comment', 'user_id').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
+    let templeteVars = {
+      resource_id: req.params.resource_id
+    };
+    res.render('resource_show', templeteVars);
   });
+
+  router.post('/:resource_id/comments'), (req, res) => {
+    knex.insert('comment', 'user_id').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
+  } 
 
   router.get("/:resource_id/edit", (req,res) => {
     res.render('resource_update');
