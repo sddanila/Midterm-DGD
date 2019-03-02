@@ -14,11 +14,11 @@ $(() => {
         let $bottomDiv = $("<div>").addClass("card-body-comments")
                                   .append($('<h6>').addClass("username-comments").text(resource.id))
                                   .append($('<p>').addClass('user-comments').text(resource.comment));
-        
-        $('#card-comments').append($bottomDiv);
+
+        $('#card-comments').prepend($bottomDiv);
       }
-    }  
-  
+    }
+
     $( "#form-comments" ).submit(function(event) {
       event.preventDefault();
         var newComment = $(this).serialize();
@@ -26,10 +26,12 @@ $(() => {
           alert('You didn\'t write anything in your comment.');
         } else {
           $.post(`/resources/${currentUser}/comments`, newComment, function (data) {
-            $('#card-comments').prepend(createComments(data));
           });
         }
+        $('#card-comments').empty();
+        loadComments();
+
     });
-  
+
     loadComments();
   });

@@ -18,7 +18,18 @@
           <div class="card-body">
             <h5 class="card-title"><%= title %></h5>
             <p class="card-text"><%= description %></p>
-            <a href="#" class="btn btn-primary ">Go somewhere</a>
+            <a id='update-button' class="btn btn-primary ">Update</a>
+            <a id='like-button' class="btn btn-primary ">Like</a>
+            <form method="POST" Action="/resource/<%=resource_id%>/rating">
+              <select name="rating" id="rating">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <button type="submit" class="btn btn-primary ">Rate</button>
+            </form>
               <div class="ranking-likes">
                 <i class="fas fa-heart"><%= likes %></i>
                 <p><%= Math.round(ratings * 10) / 10 + " / 5" %></p>

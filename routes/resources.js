@@ -108,7 +108,7 @@ module.exports = (knex) => {
           description,
         });
       })
-      
+
       // let resource = knex.select('*').from('resources').where('id', '=', req.params.resource_id);
       // console.log('resource:', resource)
       // let url = knex.select('url').from('categories').where('categories.resources_id', '=' + req.params.resource_id);
@@ -126,18 +126,23 @@ module.exports = (knex) => {
   });
 
   router.post('/:resource_id/comments', (req, res) => {
-    console.log('I am here in the server');
+    let resource = req.params.resource_id;
     let userId = req.session.user_id;
+    console.log(req.body);
     console.log('userId:', userId)
-
-    // knex('comments').insert('').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
-  });
+    knex('comments').insert({user_id: userId,
+                            comment: req.body['comments-text'],
+                            resource_id: resource})
+                    .then( (something) => {
+                      res.status(200);
+                    });
+    });
 
   router.get("/:resource_id/edit", (req,res) => {
     res.render('resource_update');
   });
 
-        
+
   router.post("/:resource_id/edit", (req, res) => {
     res.send("Made a post request to change ", req.params.resource_id);
   });
