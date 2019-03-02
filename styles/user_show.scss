@@ -13,11 +13,15 @@ $main-font: 'Vollkorn', sans-serif;
 $style-font: 'Merriweather', serif;
 
 #background-logo1 {
-  opacity: 0.1
+  opacity: 0.1;
+  z-index: -1;
+  position: absolute;
 }
 
 #background-logo2 {
-  opacity: 0.1
+  opacity: 0.1;
+  z-index: -1;
+  position: absolute;
 }
 section.contain-resources {
     overflow: hidden;
@@ -31,7 +35,6 @@ section.contain-resources {
     position: absolute;
     left: 0;
     top: 0;
-    background-color: $color2;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -43,7 +46,6 @@ section.contain-resources {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: $color6;
   }
 
   div#my-resources h2,
