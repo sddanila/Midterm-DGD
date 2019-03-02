@@ -8,19 +8,14 @@ $(() => {
     $('.cards-container').append(card);
   }
 
-  function loadRating(resource_id) {
-    return $.ajax({
-        method: 'GET',
-        url: `/resources/${resource_id}/rating`,
-      }).done((ratingAvg) => {
-        return ratingAvg;
-      });
-  }
-
   function buildCards(data) {
     $('.card').remove();
     for(let resource of data) {
-      console.log(resource.id);
+      if (resource.avg === null) {
+        resource.avg = 'No Ratings';
+      } else {
+        resource.avg = resource.avg + ' /5';
+      }
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
       let $img = $("<img>").attr('alt', 'Category Pic').attr('src', resource.picture_url).addClass("card-img-top");
 
@@ -29,7 +24,7 @@ $(() => {
                                 .append($('<p>').text(resource.description).addClass('card-text'))
                                 .append($('<a>').attr('href', './resources/'+resource.id).addClass('btn btn-primary').text('Go Somewhere'));
       let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart').text(' '+resource.count)).addClass('ranking-likes')
-                                .append($('<p>').text( 'some rating / 5  Rating'));
+                                .append($('<p>').text(resource.avg));
       $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);

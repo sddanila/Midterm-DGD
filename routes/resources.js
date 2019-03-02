@@ -18,13 +18,14 @@ module.exports = (knex) => {
                             'resources.description',
                             'resources.category_id',
                             'categories.picture_url')
-                            //.avg('ratings.ratings')
-                            //.count('likes.resource_id')
+                            .avg('ratings.ratings')
+                            //.count('ratings.ratings')
+                            .count('likes.resource_id')
                     .from("resources")
                       .join("categories",{'categories.id': 'resources.category_id'})
-                      //.rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
-                      //.rightJoin("likes", {'likes.resource_id' : 'resources.id'})
-                      //.groupBy("resources.id", 'categories.picture_url');
+                      .leftJoin("ratings",{'ratings.resource_id' : 'resources.id'})
+                      .leftJoin("likes", {'likes.resource_id' : 'resources.id'})
+                      .groupBy("resources.id", 'categories.picture_url');
     if (parameters.parameter) {
       const searchParam = parameters.parameter;
       query = query.where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
@@ -120,7 +121,7 @@ module.exports = (knex) => {
   router.get("/:resource_id/rating" , (req, res) => {
     console.log('I am in the ratings');
     const resource = req.params.resource_id;
-    knex('ratings').avg('ratings').where('resource_id','like',`${resource}`)
+    knex('ratings').avg('ratings').where('resource_id','=',`${resource}`)
       .then(result => {
         console.log('I am in the server waiting' +result);
         res.send(result);
