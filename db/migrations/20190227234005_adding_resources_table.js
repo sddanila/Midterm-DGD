@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
             table.increments();
             table.string('title');
             table.text('description');
-            table.timestamp('created_at');
+            table.timestamp(true, true);
             table.integer('category_id'),
             table.integer('user_id'),
             table.foreign('category_id').references('id').on('categories');
