@@ -4,21 +4,22 @@
   <% include ./Partials/_headerR %>
 
   <body id="register">
+    <img id="background-logo4" src="/images/logo/rw_logo3.png">
     <section id="contain-resources">
-    <div id="register" class="d-flex align-items-center justify-content-center">
-			<div class="card text-center bg-secondary" style="min-width: 33rem">
-        <div class="card-header"><h3>Create your account</h3></div>
-        <div class="card-body">
-          <form method="POST" action="/user">
-            <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="username">
-            <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="email">
-            <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="password" placeholder="password">
-            <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Sign up</button>
-          </form>
+      <div id="register" class="d-flex align-items-center justify-content-center">
+        <div class="card text-center bg-secondary" style="min-width: 33rem">
+          <div class="card-header"><h3>Create your account</h3></div>
+          <div class="card-body">
+            <form method="POST" action="/user">
+              <input type="username" class="form-control mr-sm-2 my-2 my-sm-3" name="username" placeholder="username">
+              <input type="email" class="form-control mr-lg-5 my-5 my-sm-3" name="email" aria-describedby="emailHelp" placeholder="email">
+              <input type="password" class="form-control mr-sm-2 my-2 my-sm-3" name="password" placeholder="password">
+              <button type="submit" class="form-control btn btn-outline-info my-2 my-sm-0">Sign up</button>
+            </form>
+          </div>
         </div>
       </div>
-      </div>
-      </section>
+    </section>
 	</body>
 
 	<% include ./Partials/_footer %>

@@ -5,16 +5,27 @@ $color4: #ffcb9a;
 $color5: #d1e8e2;
 $color6: #eac67a;
 $color7: #E9B000;
+$color8: #cd7f32;
 
 @import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i);
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
 $main-font: 'Vollkorn', sans-serif;
-$style-font: 'Permanent Marker', sans-serif;
+$style-font: 'Merriweather', serif;
+
+#background-logo4 {
+  z-index: -1;
+  opacity: 0.3;
+  min-width: 100%;
+  min-height: 100%;
+  top: -80px;
+  position: relative;
+}
 
 section.contain-resources {
   overflow: hidden;
   position: relative;
   width: 100%;
+
 }
 
 div#register {
@@ -23,8 +34,9 @@ div#register {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: $color5;
+  // background-color: $color6;
 }
+
 
 div#register1 {
   height: 100%;
@@ -32,7 +44,7 @@ div#register1 {
   position: relative;
   right: 0;
   top: 0;
-  background-color: $color5;
+  // background-color: $color6;
 }
 
 div#register2 {
@@ -41,7 +53,7 @@ div#register2 {
   position: relative;
   right: 0;
   top: 0;
-  background-color: $color5;
+  // background-color: $color6;
 }
 
 div#register3 {
@@ -51,7 +63,7 @@ div#register3 {
   padding-bottom: 80px;
   right: 0;
   top: 0;
-  background-color: $color5;
+  // background-color: $color6;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

@@ -14,7 +14,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     if (!req.session.user_id){
-      res.render('index', {
+      res.render('register', {
         user_id: 0,
       });
     } else {
@@ -30,7 +30,7 @@ module.exports = (knex) => {
           email: email,
           password: password
         };
-        res.render('register', {
+        res.render('index', {
           user_id: userId,
           username: username,
           email: email,
