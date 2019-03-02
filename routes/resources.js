@@ -65,7 +65,10 @@ module.exports = (knex) => {
                           });
 
   router.get("/:resource_id", (req, res) => {
-    res.render('resource_show');
+    const templateVars = {
+      user_id: 0
+    };
+    res.render('resource_show', templateVars);
   });
 
   router.get("/:resource_id/edit", (req,res) => {
