@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const dbUtils = require('../lib/dbutils.js');
 
 /*
 Contains all the Routes for any Post or Get to the Resources
@@ -17,28 +18,24 @@ module.exports = (knex) => {
                             'resources.description',
                             'resources.category_id',
                             'categories.picture_url')
-                            .avg('ratings.ratings')
-                            .count('likes.resource_id')
+                            //.avg('ratings.ratings')
+                            //.count('likes.resource_id')
                     .from("resources")
                       .join("categories",{'categories.id': 'resources.category_id'})
-                      .rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
-                      .rightJoin("likes", {'likes.resource_id' : 'resources.id'})
-                      .groupBy("resources.id", 'categories.picture_url');
+                      //.rightJoin("ratings",{'ratings.resource_id' : 'resources.id'})
+                      //.rightJoin("likes", {'likes.resource_id' : 'resources.id'})
+                      //.groupBy("resources.id", 'categories.picture_url');
     if (parameters.parameter) {
       const searchParam = parameters.parameter;
       query = query.where('resources.title','LIKE', '%'+searchParam+'%').orWhere('resources.description', 'LIKE', '%'+searchParam+'%')
                     .orWhere('categories.name','LIKE','%'+searchParam+'%');
-      console.log(query.toString());
     } else if (parameters.category) {
       const category = parameters.category;
       query = query.where('categories.name','LIKE','%'+category+'%');
-      console.log(query.toString());
     }
     return query.then(result => {
       return result;
-      knex.destroy(() => {
-        console.log('Closed Connection'); });
-        })
+    })
     .catch(err => {
       console.log('Err: ' + err);
       });
@@ -51,14 +48,21 @@ module.exports = (knex) => {
     });
 
   router.get("/new", (req, res) => {
-    console.log(req.body);
     res.render('resource_new');
   });
 
   router.post("/new", (req, res) => {
-    console.log(req.body);
-    res.redirect('../');
-  });
+    let userId = req.session.user_id;
+    knex('resources').insert({ user_id: `${userId}`,
+                                title: req.body.title,
+                                description: req.body.description,
+                                category_id: `${req.body.category}`,//knex.select('id').from('categories').where('id','=',req.body.category),
+                                url: req.body.url
+                                 })
+                      .then( function(results) {
+                          res.redirect('../');
+                      });
+                          });
 
   router.get("/:resource_id", (req, res) => {
     res.render('resource_show');
