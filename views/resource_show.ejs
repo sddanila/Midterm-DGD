@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <script type="text/javascript" src="/scripts/resource_show.js"></script>
+</head>
 
   <% include ./Partials/_header %>
 
   <body>
 
     <section class="cards-container-show" id="contain-resources">
-      <div id="register" class="d-flex align-items-center justify-content-center">
-        <div class="card" style="width: 28rem;">
+      <div id="register1" class="d-flex align-items-center justify-content-center">
+        <div class="card" style="width: 34rem;">
           <img class="card-img-top" src="/images/kids.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
@@ -16,6 +19,23 @@
           </div>
         </div>
       </div>
+      <div id="register2" class="d-flex align-items-center justify-content-center">
+        <div class="card" style="width: 34rem;">
+          <div class="card-body">
+            <h6 class="card-title">Write your comment</h5>
+            <textarea name="comments" id="comments" cols="30" placeholder="Write a comment..." rows="10"></textarea>
+            <a href="/" class="btn btn-sm btn-block btn-primary">Comment</a>
+          </div>
+        </div>
+      </div>
+      <div id="register3" class="d-flex align-items-center justify-content-center">
+          <div class="card" style="width: 34rem;">
+            <div class="card-body-comments">
+              <h6 class="username-comments" class="card-title">Username will be printed here</h5>
+              <p class="user-comments">user comments here</p>
+            </div>
+          </div>
+        </div>
     </section>
 
     <% include ./Partials/_footer %>

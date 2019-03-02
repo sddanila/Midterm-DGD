@@ -19,6 +19,34 @@ div#register {
   background-color: $color5;
 }
 
+div#register1 {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  right: 0;
+  top: 0;
+  background-color: $color5;
+}
+
+div#register2 {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  right: 0;
+  top: 0;
+  background-color: $color5;
+}
+
+div#register3 {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+  right: 0;
+  top: 0;
+  background-color: $color5;
+}
+
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
   div#register {
