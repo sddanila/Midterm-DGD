@@ -16,7 +16,7 @@ section.contain-resources {
       position: relative;
       width: 100%;
   }
-  
+
   div#my-resources {
     height: 100%;
     width: 50%;
@@ -24,8 +24,11 @@ section.contain-resources {
     left: 0;
     top: 0;
     background-color: $color2;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
+
   div#liked-resources {
     height: 100%;
     width: 50%;
@@ -34,12 +37,13 @@ section.contain-resources {
     top: 0;
     background-color: $color3;
   }
-  
+
   div#my-resources h2,
   div#liked-resources h2 {
     float: initial;
     padding: 5rem;
     text-align: -webkit-center;
+    width: 100%;
   }
 
   /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

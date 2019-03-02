@@ -48,7 +48,29 @@ module.exports = (knex) => {
     });
 
   router.get("/new", (req, res) => {
-    res.render('resource_new');
+    if(dbUtils.isLoggedIn(req.session.user_id)){
+      let userId = req.session.user_id;
+      dbUtils.findUserById(userId, (err, result) => {
+      if(err) console.error(err);
+        let username = result[0].username;
+        let email = result[0].email;
+        let password = result[0].password;
+        let templateVars = {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        };
+        res.render('resource_new', {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        });
+      });
+    } else {
+      res.redirect('/login');
+    }
   });
 
   router.post("/new", (req, res) => {
@@ -71,9 +93,9 @@ module.exports = (knex) => {
     res.render('resource_show', templateVars);
   });
 
-  router.post('/:resource_id/comments'), (req, res) => {
+  router.post('/:resource_id/comments', (req, res) => {
     knex.insert('comment', 'user_id').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
-  } 
+  });
 
   router.get("/:resource_id/edit", (req,res) => {
     res.render('resource_update');
@@ -96,14 +118,13 @@ module.exports = (knex) => {
   });
 
   router.get("/:resource_id/rating" , (req, res) => {
+    console.log('I am in the ratings');
     const resource = req.params.resource_id;
-    knex('ratings').sum('ratings').count('ratings').where('resource_id','=',`${resource}`)
+    knex('ratings').avg('ratings').where('resource_id','like',`${resource}`)
       .then(result => {
         console.log('I am in the server waiting' +result);
         res.send(result);
-        knex.destroy(() => {
-          console.log('Closed Connection'); });
-          })
+      })
       .catch(err => {
         console.log('Err: ' + err);
         });

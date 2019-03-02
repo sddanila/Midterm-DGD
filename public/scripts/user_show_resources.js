@@ -1,20 +1,7 @@
 $(() => {
 
-  function rounder(num) {
-    return Math.round(num*10)/10;
-  }
-
   function renderToPage(card) {
-    $('.cards-container').append(card);
-  }
-
-  function loadRating(resource_id) {
-    return $.ajax({
-        method: 'GET',
-        url: `/resources/${resource_id}/rating`,
-      }).done((ratingAvg) => {
-        return ratingAvg;
-      });
+    $('#my-resources').append(card);
   }
 
   function buildCards(data) {
@@ -36,44 +23,32 @@ $(() => {
     }
   }
 
-  function loadAllData () {
+  function loadAllUserData () {
+    const url = $(location).attr('href').split('/');
+    currentUser = url[url.length -1];
     $.ajax({
     method: "GET",
-    url: "/resources"
+    url: `/user/${currentUser}/data`
      }).done((resources) => {
       buildCards(resources);
+    }).done(results => {
+      buildCards(results);
     });
    }
 
-//Loads all Data
-  loadAllData();
-//Search bar ajax request
-  $('#search-bar').on('submit', function(event) {
-    event.preventDefault();
-    const search = {};
-    search.parameter = ($(this).serialize().split('=')[1]);
-    console.log(search);
-    $.ajax({
-      method: 'GET',
-      url:'/resources',
-      data: search
-      }).done(returnData => {
-      buildCards(returnData);
-    });
-  });
+   loadAllUserData();
 
-//Side bar Category Filtering
-  $('.side-category').on('click', function(event) {
-    event.preventDefault();
-    const search = {'category': $(this).text()};
-    $.ajax({
-      method: 'GET',
-      url:'/resources',
-      data: search
-      }).done(returnData => {
-      buildCards(returnData);
-    });
 
-  });
+
+
+
+
+
+
+
+
+
+
+
 
 });

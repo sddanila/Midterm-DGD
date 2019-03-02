@@ -13,38 +13,14 @@ module.exports = (knex) => {
   const dbUtils = require('../lib/dbutils.js');
 
   router.get("/", (req, res) => {
-    if (!req.session.user_id){
-      res.render('index', {
-        user_id: 0,
-      });
-    } else {
-      const userId = req.session.user_id;
-      dbUtils.findUserById(userId, (err, result) => {
-        if(err) console.error(err);
-        let username = result[0].username;
-        let email = result[0].email;
-        let password = result[0].password;
-        let templateVars = {
-          user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        };
-        res.render('register', {
-          user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        });
-      })  
-    }
+        res.render('register');
   });
 
   router.post("/", (req, res) => {
     let info = req.body;
     let password = bcrypt.hashSync(info.password, 10);
     dbUtils.createUser(info.username, info.email, password);
-    res.redirect('/');
+      res.redirect('/');
   });
 
   router.get("/:user_id", (req, res) => {
@@ -67,10 +43,28 @@ module.exports = (knex) => {
           email: email,
           password: password
         });
-      })
+      });
     } else {
       res.redirect('/login');
     }
+  });
+
+  router.get("/:user_id/data", (req, res) => {
+    console.log('Server got the request');
+    let query = knex.select('resources.id',
+                            'resources.title',
+                            'resources.description',
+                            'resources.category_id',
+                            'categories.picture_url')
+                    .from("resources")
+                    .join("categories",{'categories.id': 'resources.category_id'})
+                    .where('resources.user_id', '=', req.params.user_id);
+    return query.then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      console.log('Err: ' + err);
+      });
   });
 
   router.get("/:user_id/edit", (req, res) => {
