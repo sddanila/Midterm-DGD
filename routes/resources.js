@@ -65,6 +65,7 @@ module.exports = (knex) => {
     let templeteVars = {
       resource_id: req.params.resource_id
     };
+    console.log('resource_id:', templeteVars);
     res.render('resource_show', templeteVars);
   });
 
