@@ -21,6 +21,7 @@ const userRoutes = require("./routes/user");
 const resourceRoutes = require("./routes/resources");
 const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
+const dbUtils = require('./lib/dbutils.js');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -57,7 +58,25 @@ app.use("/logout", logoutRoutes());
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  if (!req.session.user_id){
+    res.render('index', {
+      user_id: 0,
+    });
+  } else {
+    const userId = req.session.user_id;
+    dbUtils.findUserById(userId, (err, result) => {
+      if(err) console.error(err);
+      let username = result[0].username;
+      let email = result[0].email;
+      let password = result[0].password;
+      res.render('index', {
+        user_id: userId,
+        username: username,
+        email: email,
+        password: password
+      });
+    })  
+  }
 });
 
 

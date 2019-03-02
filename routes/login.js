@@ -14,14 +14,38 @@ const dbUtils = require('../lib/dbutils.js');
 
 //Get Log IN Page
   router.get("/", (req, res) => {
-    res.render('login');
+    if (!req.session.user_id){
+      res.render('login', {
+        user_id: 0,
+      });
+    } else {
+      const userId = req.session.user_id;
+      dbUtils.findUserById(userId, (err, result) => {
+        if(err) console.error(err);
+        let username = result[0].username;
+        let email = result[0].email;
+        let password = result[0].password;
+        let templateVars = {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        };
+        console.log(templateVars);
+        res.render('login', {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        });
+      })  
+    }
   });
 
 //Post From Form on Log in page
   router.post("/", (req, res) => {
     let info = req.body;
     dbUtils.findEmail(info.email, (err, result) => {
-      console.log(result);
       const password = info.password;
       if (err || !Array.isArray(result)) return res.status(403).send('Something went wrong!');
       const user = result[0];

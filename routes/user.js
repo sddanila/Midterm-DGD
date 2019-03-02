@@ -13,7 +13,31 @@ module.exports = (knex) => {
   const dbUtils = require('../lib/dbutils.js');
 
   router.get("/", (req, res) => {
-    res.render('register');
+    if (!req.session.user_id){
+      res.render('index', {
+        user_id: 0,
+      });
+    } else {
+      const userId = req.session.user_id;
+      dbUtils.findUserById(userId, (err, result) => {
+        if(err) console.error(err);
+        let username = result[0].username;
+        let email = result[0].email;
+        let password = result[0].password;
+        let templateVars = {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        };
+        res.render('register', {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        });
+      })  
+    }
   });
 
   router.post("/", (req, res) => {
@@ -37,7 +61,12 @@ module.exports = (knex) => {
           email: email,
           password: password
         };
-        res.render('user_show', templateVars);
+        res.render('user_show', {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        });
       })
     } else {
       res.redirect('/login');
@@ -58,7 +87,12 @@ module.exports = (knex) => {
           email: email,
           password: password
         };
-        res.render('user_update', templateVars);
+        res.render('user_update', {
+          user_id: userId,
+          username: username,
+          email: email,
+          password: password
+        });
       })
     } else {
       res.redirect('/login');

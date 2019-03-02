@@ -37,8 +37,15 @@
     <form class="form-inline my-2 my-lg-0" id="search-bar">
     	<input class="form-control mr-sm-1" type="text" placeholder="Search" name="searchCriteria" aria-label="Search"/>
       <button class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="submit">Search</button>
-      <a id="btns-navbar1" href="/login"><button id="btns-navbar" class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="button">Log in</button></a>
-      <a id="btns-navbar2" href="/user"><button class="btn btn-outline-info my-2 my-sm-0" type="button">Sign up</button></a>
+      <% if (user_id === 0) { %>
+        <a id="btns-navbar1" href="/login"><button id="btns-navbar" class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="button">Log in</button></a>
+        <a id="btns-navbar2" href="/user"><button class="btn btn-outline-info my-2 my-sm-0" type="button">Sign up</button></a>
+      <% } else { %>
+        <a id="btns-navbar1" href="/resources/new"><button id="btns-navbar" class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="button">Create New Resource</button></a>
+        <a id="btns-navbar1" href="/user/<%=user_id%>"><button id="btns-navbar" class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="button">My Resources</button></a>
+        <a id="btns-navbar2" href="/user/<%=user_id%>/edit"><button class="btn btn-outline-info mr-sm-2 my-2 my-sm-0" type="button">Edit Profile</button></a>
+        <a id="btns-navbar2" href="/user/logout"><button class="btn btn-outline-info my-2 my-sm-0" type="button">Logout</button></a>
+      <% } %>
     </form>
     </div>
   </nav>
