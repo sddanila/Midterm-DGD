@@ -14,7 +14,7 @@ $style-font: 'Permanent Marker', sans-serif;
 a.navbar-brand {
     font-size: 1.7rem;
     padding: 0;
-    font: 'Permanent Marker';
+    font: $style-font;
 }
 
 nav.navbar {

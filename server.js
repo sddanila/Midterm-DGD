@@ -54,7 +54,7 @@ app.use(express.static("public"));
 app.use("/user", userRoutes(knex));
 app.use("/resources", resourceRoutes(knex));
 app.use("/login", loginRoutes(knex));
-app.use("/logout", logoutRoutes());
+app.use("/logout", logoutRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
