@@ -71,6 +71,10 @@ module.exports = (knex) => {
     res.render('resource_show', templateVars);
   });
 
+  router.post('/:resource_id/comments'), (req, res) => {
+    knex.insert('comment', 'user_id').from('comments').where('resource_id', 'like', '%' + req.params.resource_id + '%');
+  } 
+
   router.get("/:resource_id/edit", (req,res) => {
     res.render('resource_update');
   });
