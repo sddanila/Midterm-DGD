@@ -5,6 +5,7 @@ $(() => {
   }
 
   function buildCards(data) {
+    //$('#my-resources').empty('<div>');
     for(let resource of data) {
       console.log(resource.id);
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
