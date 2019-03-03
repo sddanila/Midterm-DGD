@@ -24,18 +24,17 @@ module.exports = (knex) => {
   });
 
   router.get("/:user_id", (req, res) => {
-    if(dbUtils.isLoggedIn(req.session.user_id)){
+    if(!req.session.user_id){
+      res.redirect('/login');
+    } else {
       let userId = req.session.user_id;
       dbUtils.findLikedResources(userId, (err, result) => {
         if(err) console.error(err);
-        console.log(result);
         res.render('user_show', {
           resources: result,
           user_id: userId,
         })
       });
-    } else {
-      res.redirect('/login');
     }
   });
 
