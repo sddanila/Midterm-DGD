@@ -52,13 +52,24 @@ $style-font: 'Merriweather', serif;
   margin: 0px 10px 10px 10px;
 }
 
+#resource-link {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  margin: 0px 10px 10px 151px;
+}
+
 #rating {
   position: absolute;
   height: 30px;
-  width: 50px;
+  width: 40px;
   right: 0;
   bottom: 0;
-  margin: 0px 166px 10px 10px;
+  z-index: 10;
+  margin: 0px 10px 10px 10px;
+  opacity: .5;
+  color: hsl(30, 61%, 50%);
+  border-color: hsl(30, 61%, 50%);
 }
 
 #div-like {
@@ -72,7 +83,7 @@ $style-font: 'Merriweather', serif;
 
 #ratings-count {
   position: absolute;
-  margin: 0px 0px 4px 423px;
+  margin: 0px 0px 4px 402px;
 }
 
 .card-comments {

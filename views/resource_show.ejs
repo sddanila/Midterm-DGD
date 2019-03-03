@@ -25,7 +25,7 @@
 
             <hr id="div-like"> 
             <br>
-            <button id='like-button' class="btn btn-outline-info far fa-thumbs-up">  Like</button>
+            <button id='like-button' class="btn btn-outline-info far fa-thumbs-up"> Like</button>
             <form id="ratingID" method="POST" Action="/resource/<%=resource_id%>/rating">
               <select name="rating" id="rating">
                   <option value='1'>1</option>
@@ -37,12 +37,12 @@
                 <button id="rate-btn" type="submit" class="btn btn-outline-info far fa-star">  Rate</button>
             </form>
             <form action="<%= url %>">
-              <button type="submit" class="btn btn-warning btn-lg">Read the whole resource</button>
+              <button type="submit" id="resource-link" class="btn btn-outline-info fas fa-external-link-alt"> Go to resource page</button>
             </form>
-              <div class="ranking-likes">
+              <!-- <div class="ranking-likes">
                 <i id='likeCount' class="fas fa-heart"><%= likes %></i>
                 <p><%= Math.round(ratings * 10) / 10 + " / 5" %></p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
             <form id="form-comments" action="/resources/<%= resource_id %>/comments" method="POST">
               <h6 class="card-title">Write your comment... </h5>
               <textarea id="comments-text" name="comments-text" cols="30" placeholder="Write a comment..." rows="10"></textarea>
-              <button type="submit" class="btn btn-sm btn-block btn-outline-info">Comment</button>
+              <button type="submit" class="btn btn-sm btn-block btn-outline-info far fa-comment-alt"> Comment</button>
             </form>
           </div>
         </div>
