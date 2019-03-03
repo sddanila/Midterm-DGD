@@ -30,6 +30,9 @@
                 </select>
                 <button type="submit" class="btn btn-primary ">Rate</button>
             </form>
+            <form action="<%= url %>">
+              <button type="submit" class="btn btn-warning btn-lg">Read the whole resource</button>
+            </form>
               <div class="ranking-likes">
                 <i id='likeCount' class="fas fa-heart"><%= likes %></i>
                 <p><%= Math.round(ratings * 10) / 10 + " / 5" %></p>
