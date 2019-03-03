@@ -83,14 +83,14 @@ module.exports = (knex) => {
 
   router.get('/:resource_id', (req, res) => {
     const resourceId = req.params.resource_id;
-      dbUtils.findResourceById(resourceId, (err, result) => {
+    dbUtils.findResourceById(resourceId, (err, result) => {
+      const userId = req.session.user_id;
         if(err) console.error(err);
         let title = result[0].title;
         let likes = result[0].count;
         let ratings = result[0].avg;
         let pic = result[0].picture_url;
         let description = result[0].description;
-        let userId = result[0].user_id;
         let url = result[0].url;
         res.render('resource_show', {
           resource_id: req.params.resource_id,
