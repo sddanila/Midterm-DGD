@@ -33,13 +33,12 @@ $style-font: 'Merriweather', serif;
     max-height: 190px;
   }
   .btn-outline-info {
-      position: absolute;
-      justify-content: center;
-      left: 0;
-      bottom: 0;
-      margin-top: 10px;
-      margin-bottom: 45px;
-      margin-left: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0px 0px 43px 17px;
+    height: 30px;
+    width: 252px;
   }
   .fas {
     margin-left: 10px;
@@ -49,10 +48,13 @@ $style-font: 'Merriweather', serif;
   p {
     margin-top: 0;
     margin-bottom: 1.8rem;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .p-cards {
-    margin: 0;
-    margin-right: 10px;
+    margin: 0px 6px 5px 0px;
     padding: 4px;
   }
 }

@@ -47,7 +47,7 @@ $style-font: 'Merriweather', serif;
 #rate-btn {
   position: absolute;
   right: 0;
-  width: 150px;
+  width: 115px;
   bottom: 0;
   margin: 0px 10px 10px 10px;
 }
@@ -62,12 +62,12 @@ $style-font: 'Merriweather', serif;
 #rating {
   position: absolute;
   height: 30px;
-  width: 40px;
+  width: 36;
   right: 0;
   bottom: 0;
   z-index: 10;
-  margin: 0px 10px 10px 10px;
-  opacity: .5;
+  margin: 0px 130.4px 10px 10px;
+  opacity: .8;
   color: hsl(30, 61%, 50%);
   border-color: hsl(30, 61%, 50%);
 }
