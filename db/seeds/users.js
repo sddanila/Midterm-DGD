@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
         // knex('users').insert({id: 3, username: 'dbarton', email: 'd@barton.com', password: 'password'}),
         knex('categories').insert({picture_url: '../images/crafts.jpg' , name: 'DIY and Crafts'}),
         knex('categories').insert({picture_url: '../images/fitness.jpg' , name: 'Health and Fitness'}),
-        knex('categories').insert({picture_url: '../images/food.jpg' , name: 'Food'}),
+        knex('categories').insert({picture_url: '../images/food.jpg' , name: 'Food and Dining'}),
         knex('categories').insert({picture_url: '../images/home_decor.jpg' , name: 'Home Decor'}),
         knex('categories').insert({picture_url: '../images/kids.jpg' , name: 'Kids'}),
         knex('categories').insert({picture_url: '../images/movies.jpg' , name: 'Entertainment'}),
