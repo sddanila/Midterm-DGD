@@ -12,7 +12,7 @@ $(() => {
     function createComments(data) {
       for(let resource of data) {
         let $bottomDiv = $("<div>").addClass("card-body-comments")
-                                  .append($('<h6>').addClass("username-comments").text(resource.id))
+                                  .append($('<h6>').addClass("username-comments").text(resource.username))
                                   .append($('<p>').addClass('user-comments').text(resource.comment));
 
         $('#card-comments').prepend($bottomDiv);

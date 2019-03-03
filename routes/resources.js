@@ -56,12 +56,6 @@ module.exports = (knex) => {
         let username = result[0].username;
         let email = result[0].email;
         let password = result[0].password;
-        let templateVars = {
-          user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        };
         res.render('resource_new', {
           user_id: userId,
           username: username,
@@ -81,7 +75,7 @@ module.exports = (knex) => {
                                 description: req.body.description,
                                 category_id: `${req.body.category}`,//knex.select('id').from('categories').where('id','=',req.body.category),
                                 url: req.body.url
-                                 })
+                      })
                       .then( function(results) {
                           res.redirect('../');
                       });
@@ -91,13 +85,13 @@ module.exports = (knex) => {
     const resourceId = req.params.resource_id;
       dbUtils.findResourceById(resourceId, (err, result) => {
         if(err) console.error(err);
-        console.log(result);
         let title = result[0].title;
         let likes = result[0].count;
         let ratings = result[0].avg;
         let pic = result[0].picture_url;
         let description = result[0].description;
         let userId = result[0].user_id;
+        let url = result[0].url;
         res.render('resource_show', {
           resource_id: req.params.resource_id,
           user_id: userId,
@@ -106,21 +100,18 @@ module.exports = (knex) => {
           likes,
           title,
           description,
+          url
         });
       })
-
-      // let resource = knex.select('*').from('resources').where('id', '=', req.params.resource_id);
-      // console.log('resource:', resource)
-      // let url = knex.select('url').from('categories').where('categories.resources_id', '=' + req.params.resource_id);
-      // console.log('url:', url)
-      // res.render('resource_show', {
-        //   resource: resource,
-        //   user_id: resource.user_id,
-        //   url: url});
     });
 
   router.get('/:resource_id/comments', (req, res) => {
-    knex.select('*').from('comments').where('resource_id', '=', req.params.resource_id).then(arrayOfData => {
+    knex.select('*')
+      .from('comments')
+      .join('resources', {'comments.resource_id': 'resources.id'})
+      .leftJoin('users', {'comments.user_id': 'users.id'})
+      .where('resource_id', '=', req.params.resource_id)
+      .then(arrayOfData => {
       res.send(arrayOfData);
     });
   });
@@ -128,8 +119,6 @@ module.exports = (knex) => {
   router.post('/:resource_id/comments', (req, res) => {
     let resource = req.params.resource_id;
     let userId = req.session.user_id;
-    console.log(req.body);
-    console.log('userId:', userId)
     knex('comments').insert({user_id: userId,
                             comment: req.body['comments-text'],
                             resource_id: resource})
@@ -138,22 +127,6 @@ module.exports = (knex) => {
                     });
     });
 
-  router.get("/:resource_id/edit", (req,res) => {
-    res.render('resource_update');
-  });
-
-
-  router.post("/:resource_id/edit", (req, res) => {
-    res.send("Made a post request to change ", req.params.resource_id);
-  });
-
-  router.post("/:resource_id/delete", (req, res) => {
-    res.send("Made a post to delete " + req.params.resource_id);
-  });
-
-  router.post("/:resource_id/comment", (req, res) => {
-    res.send("Made a comment post request to the post " + req.params.resource_id);
-  });
 
   router.post("/:resource_id/like", (req, res) => {
     const userID = req.session.user_id;
