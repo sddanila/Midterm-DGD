@@ -12,6 +12,22 @@ $color8: #cd7f32;
 $main-font: 'Vollkorn', sans-serif;
 $style-font: 'Merriweather', serif;
 
+.btn-primary {
+  background-color: rgba(0,0,0,.03);
+    color: #cd7f32;
+    border-color: #cd7f32;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #cd7f32;
+    border-color: #cd7f32;
+}
+
+#card-sm-height {
+  height: 358px;
+}
+
 .card {
   z-index: 1;
   margin: 5px;

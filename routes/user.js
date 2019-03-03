@@ -20,7 +20,7 @@ module.exports = (knex) => {
     let info = req.body;
     let password = bcrypt.hashSync(info.password, 10);
     dbUtils.createUser(info.username, info.email, password);
-      res.redirect('/');
+      res.redirect('/login');
   });
 
   router.get("/:user_id", (req, res) => {

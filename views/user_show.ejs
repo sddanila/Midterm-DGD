@@ -15,12 +15,12 @@
 
           <% for (var i = 0; i < userResources.length; i++){%>
 
-						<div class="card" style="width: 18rem;">
+						<div id="card-sm-height" class="card" style="width: 18rem;">
 								<img class="card-img-top" src="<%=userResources[i].picture_url%>" alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title"><%= userResources[i].title%></h5>
 									<p class="card-text cTex"><%= userResources[i].description%></p>
-									<a href="#" class="btn btn-outline-info far fa-folder-open"> View resource details</a>
+									<a href="/resources/<%= userResources[i].id %>" class="btn btn-outline-info far fa-folder-open"> View resource details</a>
 								</div>
 								<div class="ranking-likes">
 										<i class="fas fa-thumbs-up "> <%= userResources[i].count%></i>
@@ -39,12 +39,12 @@
 
 					<% for (var i = 0; i < resources.length; i++){%>
 
-						<div class="card" style="width: 18rem;">
+						<div id="card-sm-height" class="card" style="width: 18rem;">
 								<img class="card-img-top" src="<%=resources[i].picture_url%>" alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title"><%= resources[i].title%></h5>
 									<p class="card-text cTex"><%= resources[i].description%></p>
-									<a href="#" class="btn btn-outline-info far fa-folder-open"> View resource details</a>
+									<a href="/resources/<%= userResources[i].id %>" class="btn btn-outline-info far fa-folder-open"> View resource details</a>
 								</div>
 								<div class="ranking-likes">
 										<i class="fas fa-thumbs-up "> <%= resources[i].count%></i>
