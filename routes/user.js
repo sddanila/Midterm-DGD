@@ -37,8 +37,6 @@ module.exports = (knex) => {
         templateVars.resources = result;
         res.render('user_show', templateVars);
       });
-    } else {
-      res.redirect('/login');
     }
   });
 
