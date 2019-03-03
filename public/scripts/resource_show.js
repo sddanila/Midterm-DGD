@@ -12,7 +12,6 @@ $(() => {
     url: `/resources/${currentresource}/rating`,
     data: {rating: value}
      }).done((resources) => {
-      console.log('Im back');
       $('#ratingID').css('display', 'none');
     });
   });
@@ -22,24 +21,8 @@ $(() => {
     method: "POST",
     url: `/resources/${currentresource}/like`,
      }).done((resources) => {
-      console.log($('#likeCount').text());
       $('#likeCount').text( Number($('#likeCount').text()) + 1);
       $('#like-button').css('display','none');
     });
    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });

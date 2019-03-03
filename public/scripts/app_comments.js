@@ -9,29 +9,28 @@ $(() => {
     });
   }
 
-    function createComments(data) {
-      for(let resource of data) {
-        let $bottomDiv = $("<div>").addClass("card-body-comments")
-                                  .append($('<h6>').addClass("username-comments").text(resource.username))
-                                  .append($('<p>').addClass('user-comments').text(resource.comment));
+  function createComments(data) {
+    for(let resource of data) {
+      let $bottomDiv = $("<div>").addClass("card-body-comments")
+                                .append($('<h6>').addClass("username-comments").text(resource.username))
+                                .append($('<p>').addClass('user-comments').text(resource.comment));
 
-        $('#card-comments').prepend($bottomDiv);
-      }
+      $('#card-comments').prepend($bottomDiv);
     }
+  }
 
-    $( "#form-comments" ).submit(function(event) {
-      event.preventDefault();
-        var newComment = $(this).serialize();
-        if ($('textarea').val() === "" || $('textarea').val() === null) {
-          alert('You didn\'t write anything in your comment.');
-        } else {
-          $.post(`/resources/${currentUser}/comments`, newComment, function (data) {
-          });
-        }
-        $('#card-comments').empty();
-        loadComments();
+  $( "#form-comments" ).submit(function(event) {
+    event.preventDefault();
+      var newComment = $(this).serialize();
+      if ($('textarea').val() === "" || $('textarea').val() === null) {
+        alert('You didn\'t write anything in your comment.');
+      } else {
+        $.post(`/resources/${currentUser}/comments`, newComment, function (data) {
+        });
+      }
+      let comment = newComment.split('=')[1].replace(/%20/g, ' ');
+      createComments([{username: 'You', comment: comment}]);
+  });
 
-    });
-
-    loadComments();
+  loadComments();
   });
