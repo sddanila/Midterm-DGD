@@ -25,11 +25,12 @@ $style-font: 'Merriweather', serif;
 }
 section.contain-resources {
     overflow: hidden;
-      position: relative;
-      width: 100%;
+    position: relative;
+    width: 100%;
   }
 
   div#my-resources {
+    // background-image: url("/images/logo/rw_logo3.png");
     height: 100%;
     width: 50%;
     position: absolute;
@@ -45,7 +46,10 @@ section.contain-resources {
     width: 50%;
     position: absolute;
     right: 0;
+    display: flex;
+    flex-wrap: wrap;
     top: 0;
+    justify-content: center;
   }
 
   div#my-resources h2,

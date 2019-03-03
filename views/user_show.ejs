@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" href="/styles/card.css" type="text/css" />
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/user_show_resources.js"></script>
 </head>
 	<% include ./Partials/_header %>
 
   	<body>
-		  <section id="contain-resources">
+		  <section id="contain-resources" style="background-repeat: repeat;">
 			  <div id="my-resources">
 				<img id="background-logo1" src="/images/logo/rw_logo3.png">
 				  <h2>My Resources</h2>
@@ -22,17 +23,17 @@
 									<img class="card-img-top" src="<%=resources[i].picture_url%>" alt="Card image cap">
 									<div class="card-body">
 										<h5 class="card-title"><%= resources[i].title%></h5>
-										<p class="card-text"><%= resources[i].description%></p>
-										<a href="#" class="btn btn-primary">See resource</a>
-										<div class="ranking-likes">
-											<i class="fas fa-heart"><%= resources[i].count%></i>
+										<p class="card-text cTex"><%= resources[i].description%></p>
+										<a href="#" class="btn btn-outline-info far fa-folder-open"> View resource details</a>
+									</div>
+									<div class="ranking-likes">
+											<i class="fas fa-thumbs-up "> <%= resources[i].count%></i>
 											<% if (resources[i].avg === null){ %>
-												<p>Not rated</p>
+												<p class="p-cards fas fa-star" > Not rated</p>
 											<% } else { %>
-												<p><%= Math.round(resources[i].avg * 10) / 10 %> / 5</p>
+												<p class="p-cards fas fa-star"> <%= Math.round(resources[i].avg * 10) / 10 %> / 5</p>
 											<% } %>
 										</div>
-									</div>
 								</div>
 					<% } %>
 					
