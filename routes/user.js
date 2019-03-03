@@ -26,23 +26,13 @@ module.exports = (knex) => {
   router.get("/:user_id", (req, res) => {
     if(dbUtils.isLoggedIn(req.session.user_id)){
       let userId = req.session.user_id;
-      dbUtils.findUserById(userId, (err, result) => {
+      dbUtils.findLikedResources(userId, (err, result) => {
         if(err) console.error(err);
-        let username = result[0].username;
-        let email = result[0].email;
-        let password = result[0].password;
-        let templateVars = {
-          user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        };
+        console.log(result);
         res.render('user_show', {
+          resources: result,
           user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        });
+        })
       });
     } else {
       res.redirect('/login');
