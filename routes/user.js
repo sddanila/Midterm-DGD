@@ -65,12 +65,6 @@ module.exports = (knex) => {
         let username = result[0].username;
         let email = result[0].email;
         let password = result[0].password;
-        let templateVars = {
-          user_id: userId,
-          username: username,
-          email: email,
-          password: password
-        };
         res.render('user_update', {
           user_id: userId,
           username: username,
@@ -98,7 +92,7 @@ module.exports = (knex) => {
           dbUtils.updateUsername(userId, newUsername);
         } else if (newEmail.length !== 0 && email !== newEmail){
           dbUtils.updateEmail(userId, newEmail);
-        } else if (req.body.oldPassword.length !== 0 && newPassword.length !== 0 && req.body.newPassword2.length !== 0 && !bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
+        } else if (req.body.oldPassword.length !== 0 && newPassword.length !== 0 && req.body.newPassword2.length !== 0 && bcrypt.compareSync(req.body.oldPassword, password) && req.body.newPassword === req.body.newPassword2){
           let newHashedPassword = bcrypt.hashSync(req.body.newPassword, 10)
           dbUtils.updatePassword(userId, newHashedPassword);
         } else {
