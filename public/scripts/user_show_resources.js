@@ -5,7 +5,6 @@ $(() => {
   }
 
   function buildCards(data) {
-    $('.card').remove();
     for(let resource of data) {
       console.log(resource.id);
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
@@ -29,14 +28,14 @@ $(() => {
     $.ajax({
     method: "GET",
     url: `/user/${currentUser}/data`
-     }).done((resources) => {
+    }).done((resources) => {
       buildCards(resources);
     }).done(results => {
       buildCards(results);
     });
-   }
+  }
 
-   loadAllUserData();
+loadAllUserData();
 
 
 
