@@ -4,7 +4,6 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/user_show_resources.js"></script>
 </head>
-  <% console.log(user_id)%>
 	<% include ./Partials/_header %>
 
   	<body>
@@ -15,7 +14,28 @@
 			  </div>
 			  <div id="liked-resources">
 				  <img id="background-logo2" src="/images/logo/rw_logo3.png">
-				  <h2>Liked Resources</h2>
+					<h2>Liked Resources</h2>
+
+					<% for (var i = 0; i < resources.length; i++){%>
+
+								<div class="card" style="width: 18rem;">
+									<img class="card-img-top" src="<%=resources[i].picture_url%>" alt="Card image cap">
+									<div class="card-body">
+										<h5 class="card-title"><%= resources[i].title%></h5>
+										<p class="card-text"><%= resources[i].description%></p>
+										<a href="#" class="btn btn-primary">See resource</a>
+										<div class="ranking-likes">
+											<i class="fas fa-heart"><%= resources[i].count%></i>
+											<% if (resources[i].avg === null){ %>
+												<p>Not rated</p>
+											<% } else { %>
+												<p><%= Math.round(resources[i].avg * 10) / 10 %> / 5</p>
+											<% } %>
+										</div>
+									</div>
+								</div>
+					<% } %>
+					
 			  </div>
 		  </section>
 

@@ -22,9 +22,9 @@ $(() => {
       let $middleDiv = $("<div>").addClass("card-body")
                                 .append($('<h5>').text(resource.title).addClass("card-title"))
                                 .append($('<p>').text(resource.description).addClass('card-text'))
-                                .append($('<a>').attr('href', './resources/'+resource.id).addClass('btn btn-primary').text('Go Somewhere'));
+                                .append($('<a>').attr('href', './resources/'+resource.id).addClass('btn btn-primary').text('View resource'));
       let $bottomDiv = $('<div>').append($('<i>').addClass('fas fa-heart').text(' '+resource.count)).addClass('ranking-likes')
-                                .append($('<p>').text(resource.avg));
+                                .append($('<p>').text(resource.avg).addClass('p-cards'));
       $outerdiv.append($img).append($middleDiv).append($bottomDiv);
 
       renderToPage($outerdiv);
