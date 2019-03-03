@@ -156,7 +156,14 @@ module.exports = (knex) => {
   });
 
   router.post("/:resource_id/like", (req, res) => {
-    res.send("Made a like to post " + req.params.resource_id);
+    const userID = req.session.user_id;
+    const resource_id = req.params.resource_id;
+        knex('likes').insert({resource_id: resource_id,
+                            user_id: userID
+                          })
+                    .then( (results) => {
+                      res.send(results);
+                    });
   });
 
 
@@ -174,7 +181,16 @@ module.exports = (knex) => {
   });
 
   router.post("/:resource_id/rating", (req, res) => {
-    res.send("Made a rating to post " + req.params.resource_id);
+    const resource_id = req.params.resource_id;
+    const rating = req.body.rating;
+    const userID = req.session.user_id;
+    knex('ratings').insert({resource_id: resource_id,
+                            user_id: userID,
+                            ratings: rating
+                    })
+              .then( (results) => {
+                res.send(results);
+              });
   });
 
   return router;
