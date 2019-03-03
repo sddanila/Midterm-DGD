@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/styles/cards_show.css" type="text/css" />
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <!-- App js -->
@@ -19,7 +20,12 @@
           <div class="card-body">
             <h5 class="card-title"><%= title %></h5>
             <p class="card-text"><%= description %></p>
-            <a id='like-button' class="btn btn-primary ">Like</a>
+            <i id='likeCount' class="fas fa-thumbs-up"> <%= likes %></i>
+            <p id="ratings-count" class="fas fa-star"> <%= Math.round(ratings * 10) / 10 + " / 5" %></p>
+
+            <hr id="div-like"> 
+            <br>
+            <button id='like-button' class="btn btn-outline-info far fa-thumbs-up">  Like</button>
             <form id="ratingID" method="POST" Action="/resource/<%=resource_id%>/rating">
               <select name="rating" id="rating">
                   <option value='1'>1</option>
@@ -28,12 +34,8 @@
                   <option value = '4'>4</option>
                   <option value = '5'>5</option>
                 </select>
-                <button type="submit" class="btn btn-primary ">Rate</button>
+                <button id="rate-btn" type="submit" class="btn btn-outline-info far fa-star">  Rate</button>
             </form>
-              <div class="ranking-likes">
-                <i id='likeCount' class="fas fa-heart"><%= likes %></i>
-                <p><%= Math.round(ratings * 10) / 10 + " / 5" %></p>
-            </div>
           </div>
         </div>
       </div>
@@ -41,9 +43,9 @@
         <div class="card" style="width: 34rem;">
           <div class="card-body">
             <form id="form-comments" action="/resources/<%= resource_id %>/comments" method="POST">
-              <h6 class="card-title">Write your comment</h5>
+              <h6 class="card-title">Write your comment... </h5>
               <textarea id="comments-text" name="comments-text" cols="30" placeholder="Write a comment..." rows="10"></textarea>
-              <button type="submit" class="btn btn-sm btn-block btn-primary">Comment</button>
+              <button type="submit" class="btn btn-sm btn-block btn-outline-info">Comment</button>
             </form>
           </div>
         </div>
