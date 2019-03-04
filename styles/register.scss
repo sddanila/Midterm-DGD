@@ -18,7 +18,7 @@ $style-font: 'Merriweather', serif;
   min-width: 100%;
   min-height: 100%;
   top: -80px;
-  position: relative;
+  position: fixed;
 }
 
 section.contain-resources {
@@ -34,7 +34,7 @@ div#register {
   position: absolute;
   right: 0;
   top: 0;
-  // background-color: $color6;
+  // background-color: $color6; 
 }
 
 

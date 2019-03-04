@@ -15,18 +15,45 @@ $style-font: 'Merriweather', serif;
 #background-logo1 {
   opacity: 0.1;
   z-index: -1;
-  position: absolute;
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #background-logo2 {
   opacity: 0.1;
   z-index: -1;
-  position: absolute;
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 section.contain-resources {
     overflow: hidden;
     position: relative;
     width: 100%;
+  }
+
+  div#my-login {
+    background-image: url("/images/logo/rw_logo.png");
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   div#my-resources {
@@ -51,6 +78,11 @@ section.contain-resources {
     top: 0;
     justify-content: center;
   }
+
+  div#bot-margin {
+    height: 63px;
+    width: 100%;
+}
 
   div#my-resources h2,
   div#liked-resources h2 {

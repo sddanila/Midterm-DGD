@@ -25,7 +25,7 @@ $style-font: 'Merriweather', serif;
 }
 
 #card-sm-height {
-  height: 358px;
+  height: 360px;
 }
 
 .card {
@@ -33,6 +33,10 @@ $style-font: 'Merriweather', serif;
   margin: 5px;
   .card-title {
     border-bottom: 1px solid;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .ranking-likes {
     display: inline-flex;
@@ -92,6 +96,7 @@ section.cards-container {
   display: flex;
   flex-direction: row;
   margin-left: 220px;
+  margin-bottom: 67px;
   flex-wrap: wrap;
 }
 

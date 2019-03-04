@@ -3,19 +3,18 @@
 <head>
 	<link rel="stylesheet" href="/styles/card.css" type="text/css" />
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <!-- <script type="text/javascript" src="/scripts/user_show_resources.js"></script> -->
 </head>
 	<% include ./Partials/_header %>
 
   	<body>
-		  <section id="contain-resources" style="background-repeat: repeat;">
+		  <section id="contain-resources">
 			  <div id="my-resources">
 				<img id="background-logo1" src="/images/logo/rw_logo3.png">
 				  <h2>My Resources</h2>
 
           <% for (var i = 0; i < userResources.length; i++){%>
 
-						<div class="card" style="width: 18rem;">
+						<div id="card-sm-height" class="card" style="width: 18rem;">
 								<img class="card-img-top" src="<%=userResources[i].picture_url%>" alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title"><%= userResources[i].title%></h5>
@@ -31,7 +30,9 @@
 										<% } %>
 									</div>
 							</div>
-      <% } %>
+      <% } %><div id="bot-margin">
+				  
+	</div>
 			  </div>
 			  <div id="liked-resources">
 				  <img id="background-logo2" src="/images/logo/rw_logo3.png">
@@ -39,7 +40,7 @@
 
 					<% for (var i = 0; i < resources.length; i++){%>
 
-						<div class="card" style="width: 18rem;">
+						<div id="card-sm-height" class="card" style="width: 18rem;">
 								<img class="card-img-top" src="<%=resources[i].picture_url%>" alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title"><%= resources[i].title%></h5>
@@ -56,7 +57,9 @@
 									</div>
 							</div>
 					<% } %>
-
+					<div id="bot-margin">
+				  
+					</div>
 			  </div>
 		  </section>
 

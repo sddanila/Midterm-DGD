@@ -14,7 +14,7 @@ $(() => {
       if (resource.avg === null) {
         resource.avg = 'No Ratings';
       } else {
-        resource.avg = rounder(resource.avg) + ' /5';
+        resource.avg = rounder(resource.avg) + ' / 5';
       }
       let $outerdiv = $("<div>").addClass("card").css('width', '18rem');
       let $img = $("<img>").attr('alt', 'Category Pic').attr('src', resource.picture_url).addClass("card-img-top");
