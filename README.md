@@ -8,15 +8,15 @@ One of the best features is being able to rate resources. This allows users and 
 
 ## Sneak Peak
 
-![rw_main_page](https://github.com/GideonBrasil/tweeter/blob/master/docs/main_page.png?raw=true)
+![rw_main_page](https://github.com/sddanila/Midterm-DGD/blob/master/docs/rw_main_page.png?raw=true)
 
-[View all users posted resources in one place.](https://github.com/GideonBrasil/tweeter/blob/master/docs/main_page.png?raw=true)
+[View all users posted resources in one place.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/rw_main_page.png?raw=true)
 
 ***
 
-![view_resource](https://github.com/GideonBrasil/tweeter/blob/master/docs/newTweet-highlight.png?raw=true)
+![view_resource](https://github.com/sddanila/Midterm-DGD/blob/master/docs/view_resource.png?raw=true)
 
-[View an individual resource to like, comment and rate.](https://github.com/GideonBrasil/tweeter/blob/master/docs/newTweet-highlight.png?raw=true)
+[View an individual resource to like, comment and rate.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/view_resource.png?raw=true)
 
 
 ## Getting Started
