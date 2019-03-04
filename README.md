@@ -31,3 +31,15 @@ One of the best features is being able to rate resources. This allows users and 
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+- Bcrypt 2.0.0
+- Body-parser 1.15.2
+- Cookie-session 1.3.3
+- Dotenv 2.0.0
+- EJS 2.4.1
+- Express 4.13.4
+- Express-session 1.15.6
+- Knex 0.16.3
+- Knex-logger 0.1.0
+- Morgan 1.7.0
+- Node-sass-middleware 0.9.8
+- PG 6.0.2
