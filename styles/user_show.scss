@@ -46,14 +46,14 @@ section.contain-resources {
 
   div#my-login {
     background-image: url("/images/logo/rw_logo.png");
+    background-position: center;
+    background-size: cover;
     height: 100%;
     width: 50%;
     position: fixed;
     left: 0;
     top: 0;
-    display:flex;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
   div#my-resources {
