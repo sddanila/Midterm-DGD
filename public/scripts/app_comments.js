@@ -30,6 +30,7 @@ $(() => {
       }
       let comment = newComment.split('=')[1].replace(/%20/g, ' ');
       createComments([{username: 'You', comment: comment}]);
+      $('#comments-text').val('');
   });
 
   loadComments();

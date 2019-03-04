@@ -25,6 +25,7 @@
 
             <hr id="div-like">
             <br>
+            <% if (user_id) { %>
             <button id='like-button' class="btn btn-outline-info far fa-thumbs-up"> Like</button>
             <form id="ratingID" method="POST" Action="/resource/<%=resource_id%>/rating">
               <select name="rating" id="rating">
@@ -36,12 +37,14 @@
                 </select>
                 <button id="rate-btn" type="submit" class="btn btn-outline-info far fa-star">  Rate</button>
             </form>
+            <% } %>
             <form action="<%= url %>">
               <button type="submit" id="resource-link" class="btn btn-outline-info fas fa-external-link-alt"> Go to resource page</button>
             </form>
           </div>
         </div>
       </div>
+      <% if (user_id) { %>
       <div id="register2" class="d-flex align-items-center justify-content-center">
         <div class="card" style="width: 34rem;">
           <div class="card-body">
@@ -53,6 +56,7 @@
           </div>
         </div>
       </div>
+      <% } %>
       <div id="register3" class="d-flex align-items-center justify-content-center">
           <div class="card" id="card-comments" style="width: 34rem;">
 

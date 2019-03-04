@@ -85,6 +85,8 @@ module.exports = (knex) => {
     const resourceId = req.params.resource_id;
     dbUtils.findResourceById(resourceId, (err, result) => {
       const userId = req.session.user_id;
+      console.log('userId:', userId);
+
         if(err) console.error(err);
         let title = result[0].title;
         let likes = result[0].count;
