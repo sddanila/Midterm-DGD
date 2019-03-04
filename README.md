@@ -10,13 +10,13 @@ One of the best features is being able to rate resources. This allows users and 
 
 ![rw_main_page](https://github.com/sddanila/Midterm-DGD/blob/master/docs/rw_main_page.png?raw=true)
 
-[View all users posted resources in one place.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/rw_main_page.png?raw=true)
+[View all userss posted resources in one place.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/rw_main_page.png?raw=true)
 
 ***
 
 ![view_resource](https://github.com/sddanila/Midterm-DGD/blob/master/docs/view_resource.png?raw=true)
 
-[View an individual resource to like, comment and rate.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/view_resource.png?raw=true)
+[View an individual resource to like, comment and rate it.](https://github.com/sddanila/Midterm-DGD/blob/master/docs/view_resource.png?raw=true)
 
 
 ## Getting Started
